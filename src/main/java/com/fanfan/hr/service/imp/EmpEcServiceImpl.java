@@ -44,7 +44,7 @@ public class EmpEcServiceImpl implements EmpEcService {
         Employee employee = employeeMapper.selectByPrimaryKey(employeeEc.getEid());
         if(employee == null) {
             jsonResult.setData(false);
-            jsonResult.setMessage("员工不存在,新增失败");
+            jsonResult.setMessage("员工不存在，新增失败");
             return jsonResult;
         }
         if(employeeEcMapper.insert(employeeEc) > 0) {
