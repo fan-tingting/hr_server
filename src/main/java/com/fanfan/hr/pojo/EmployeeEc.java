@@ -1,11 +1,15 @@
 package com.fanfan.hr.pojo;
 
+import com.fanfan.hr.common.util.StringUtil;
+
 import java.util.Date;
 
 public class EmployeeEc {
     private Integer id;
 
     private Integer eid;
+
+    private String name;
 
     private Date ecdate;
 
@@ -16,6 +20,14 @@ public class EmployeeEc {
     private Integer ectype;
 
     private String remark;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public EmployeeEc(Integer id, Integer eid, Date ecdate, String ecreason, Integer ecpoint, Integer ectype, String remark) {
         this.id = id;
@@ -51,8 +63,8 @@ public class EmployeeEc {
         return ecdate;
     }
 
-    public void setEcdate(Date ecdate) {
-        this.ecdate = ecdate;
+    public void setEcdate(String ecdate) {
+        this.ecdate = StringUtil.getDateFromStr(ecdate);
     }
 
     public String getEcreason() {

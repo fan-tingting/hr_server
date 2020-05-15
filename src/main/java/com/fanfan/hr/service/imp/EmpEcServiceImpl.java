@@ -6,7 +6,6 @@ import com.fanfan.hr.common.JsonResult;
 import com.fanfan.hr.mapper.EmployeeEcMapper;
 import com.fanfan.hr.pojo.EmployeeEc;
 import com.fanfan.hr.service.EmpEcService;
-import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +16,6 @@ public class EmpEcServiceImpl implements EmpEcService {
 
     @Autowired
     private EmployeeEcMapper employeeEcMapper;
-
 
     @Override
     public JsonResult getEcList(EmpinfoInputDTO empinfoInputDTO) {
@@ -35,4 +33,45 @@ public class EmpEcServiceImpl implements EmpEcService {
         jsonResult.setMessage("获取奖惩列表成功");
         return jsonResult;
     }
+
+    @Override
+    public JsonResult addEmpEc(EmployeeEc employeeEc) {
+        JsonResult jsonResult = new JsonResult();
+        if(employeeEcMapper.insert(employeeEc) > 0) {
+            jsonResult.setMessage("新增成功");
+            jsonResult.setData(true);
+            return jsonResult;
+        }
+        jsonResult.setData(false);
+        jsonResult.setMessage("新增失败");
+        return jsonResult;
+    }
+
+    @Override
+    public JsonResult updateEmpEc(EmployeeEc employeeEc) {
+        JsonResult jsonResult = new JsonResult();
+        if(employeeEcMapper.updateByPrimaryKeySelective(employeeEc) > 1) {
+            jsonResult.setData(true);
+            jsonResult.setMessage("修改成功");
+            return jsonResult;
+        }
+        jsonResult.setData(false);
+        jsonResult.setMessage("修改失败");
+        return jsonResult;
+    }
+
+    @Override
+    public JsonResult deleteEmpEc(Integer id) {
+        JsonResult jsonResult = new JsonResult();
+        if(employeeEcMapper.deleteByPrimaryKey(id) > 0) {
+            jsonResult.setData(true);
+            jsonResult.setMessage("删除成功");
+            return jsonResult;
+        }
+        jsonResult.setData(false);
+        jsonResult.setMessage("删除失败");
+        return jsonResult;
+    }
+
+
 }

@@ -117,15 +117,31 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="getEcList" parameterType="com.fanfan.hr.common.EmpinfoInputDTO"
-      resultMap="BaseResultMap">
+      resultType="com.fanfan.hr.pojo.EmployeeEc">
     SELECT
-    <include refid="Base_Column_List" />
+        ee.*,
+        e.`name`
     FROM
         employee_ec ee
-    WHERE
-        eid = #{id,jdbcType=INTEGER}
+    LEFT JOIN employee e on e.id = ee.eid
+    WHERE 1 = 1
+    <if test="id != null">
+      and eid = #{id,jdbcType=INTEGER}
+    </if>
     ORDER BY
         id ASC
     LIMIT #{beginPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <select id="getTotalEcList" parameterType="com.fanfan.hr.common.EmpinfoInputDTO"
+          resultType="java.lang.Integer">
+    SELECT
+        count(*)
+    FROM
+    employee_ec ee
+    LEFT JOIN employee e on e.id = ee.eid
+    WHERE 1 = 1
+    <if test="id != null">
+      and eid = #{id,jdbcType=INTEGER}
+    </if>
   </select>
 </mapper>
