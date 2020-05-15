@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fanfan.hr.mapper.SalaryMapper" >
+  <resultMap id="BaseResultMap" type="com.fanfan.hr.pojo.Salary" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <idArg column="createdate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="basic" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="award" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="lunch" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="traffic" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="allsalary" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="yanglaobase" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="yanglaoper" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="yiliaobase" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="yiliaoper" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="gongjijinbase" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="gongjijinper" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="lostjobbase" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="lostjobper" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="hurtbase" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="hurtper" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="babybase" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="babyper" jdbcType="REAL" javaType="java.lang.Float" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, createdate, basic, award, lunch, traffic, allsalary, yanglaobase, yanglaoper, 
+    yiliaobase, yiliaoper, gongjijinbase, gongjijinper, lostjobbase, lostjobper, hurtbase, 
+    hurtper, babybase, babyper
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.fanfan.hr.pojo.SalaryKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from salary
+    where id = #{id,jdbcType=INTEGER}
+      and createdate = #{createdate,jdbcType=TIMESTAMP}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.fanfan.hr.pojo.SalaryKey" >
+    delete from salary
+    where id = #{id,jdbcType=INTEGER}
+      and createdate = #{createdate,jdbcType=TIMESTAMP}
+  </delete>
+  <insert id="insert" parameterType="com.fanfan.hr.pojo.Salary" >
+    insert into salary (id, createdate, basic, 
+      award, lunch, traffic, 
+      allsalary, yanglaobase, yanglaoper, 
+      yiliaobase, yiliaoper, gongjijinbase, 
+      gongjijinper, lostjobbase, lostjobper, 
+      hurtbase, hurtper, babybase, 
+      babyper)
+    values (#{id,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, #{basic,jdbcType=INTEGER}, 
+      #{award,jdbcType=INTEGER}, #{lunch,jdbcType=INTEGER}, #{traffic,jdbcType=INTEGER}, 
+      #{allsalary,jdbcType=INTEGER}, #{yanglaobase,jdbcType=INTEGER}, #{yanglaoper,jdbcType=REAL}, 
+      #{yiliaobase,jdbcType=INTEGER}, #{yiliaoper,jdbcType=REAL}, #{gongjijinbase,jdbcType=INTEGER}, 
+      #{gongjijinper,jdbcType=REAL}, #{lostjobbase,jdbcType=INTEGER}, #{lostjobper,jdbcType=REAL}, 
+      #{hurtbase,jdbcType=INTEGER}, #{hurtper,jdbcType=REAL}, #{babybase,jdbcType=INTEGER}, 
+      #{babyper,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fanfan.hr.pojo.Salary" >
+    insert into salary
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="createdate != null" >
+        createdate,
+      </if>
+      <if test="basic != null" >
+        basic,
+      </if>
+      <if test="award != null" >
+        award,
+      </if>
+      <if test="lunch != null" >
+        lunch,
+      </if>
+      <if test="traffic != null" >
+        traffic,
+      </if>
+      <if test="allsalary != null" >
+        allsalary,
+      </if>
+      <if test="yanglaobase != null" >
+        yanglaobase,
+      </if>
+      <if test="yanglaoper != null" >
+        yanglaoper,
+      </if>
+      <if test="yiliaobase != null" >
+        yiliaobase,
+      </if>
+      <if test="yiliaoper != null" >
+        yiliaoper,
+      </if>
+      <if test="gongjijinbase != null" >
+        gongjijinbase,
+      </if>
+      <if test="gongjijinper != null" >
+        gongjijinper,
+      </if>
+      <if test="lostjobbase != null" >
+        lostjobbase,
+      </if>
+      <if test="lostjobper != null" >
+        lostjobper,
+      </if>
+      <if test="hurtbase != null" >
+        hurtbase,
+      </if>
+      <if test="hurtper != null" >
+        hurtper,
+      </if>
+      <if test="babybase != null" >
+        babybase,
+      </if>
+      <if test="babyper != null" >
+        babyper,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createdate != null" >
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="basic != null" >
+        #{basic,jdbcType=INTEGER},
+      </if>
+      <if test="award != null" >
+        #{award,jdbcType=INTEGER},
+      </if>
+      <if test="lunch != null" >
+        #{lunch,jdbcType=INTEGER},
+      </if>
+      <if test="traffic != null" >
+        #{traffic,jdbcType=INTEGER},
+      </if>
+      <if test="allsalary != null" >
+        #{allsalary,jdbcType=INTEGER},
+      </if>
+      <if test="yanglaobase != null" >
+        #{yanglaobase,jdbcType=INTEGER},
+      </if>
+      <if test="yanglaoper != null" >
+        #{yanglaoper,jdbcType=REAL},
+      </if>
+      <if test="yiliaobase != null" >
+        #{yiliaobase,jdbcType=INTEGER},
+      </if>
+      <if test="yiliaoper != null" >
+        #{yiliaoper,jdbcType=REAL},
+      </if>
+      <if test="gongjijinbase != null" >
+        #{gongjijinbase,jdbcType=INTEGER},
+      </if>
+      <if test="gongjijinper != null" >
+        #{gongjijinper,jdbcType=REAL},
+      </if>
+      <if test="lostjobbase != null" >
+        #{lostjobbase,jdbcType=INTEGER},
+      </if>
+      <if test="lostjobper != null" >
+        #{lostjobper,jdbcType=REAL},
+      </if>
+      <if test="hurtbase != null" >
+        #{hurtbase,jdbcType=INTEGER},
+      </if>
+      <if test="hurtper != null" >
+        #{hurtper,jdbcType=REAL},
+      </if>
+      <if test="babybase != null" >
+        #{babybase,jdbcType=INTEGER},
+      </if>
+      <if test="babyper != null" >
+        #{babyper,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fanfan.hr.pojo.Salary" >
+    update salary
+    <set >
+      <if test="basic != null" >
+        basic = #{basic,jdbcType=INTEGER},
+      </if>
+      <if test="award != null" >
+        award = #{award,jdbcType=INTEGER},
+      </if>
+      <if test="lunch != null" >
+        lunch = #{lunch,jdbcType=INTEGER},
+      </if>
+      <if test="traffic != null" >
+        traffic = #{traffic,jdbcType=INTEGER},
+      </if>
+      <if test="allsalary != null" >
+        allsalary = #{allsalary,jdbcType=INTEGER},
+      </if>
+      <if test="yanglaobase != null" >
+        yanglaobase = #{yanglaobase,jdbcType=INTEGER},
+      </if>
+      <if test="yanglaoper != null" >
+        yanglaoper = #{yanglaoper,jdbcType=REAL},
+      </if>
+      <if test="yiliaobase != null" >
+        yiliaobase = #{yiliaobase,jdbcType=INTEGER},
+      </if>
+      <if test="yiliaoper != null" >
+        yiliaoper = #{yiliaoper,jdbcType=REAL},
+      </if>
+      <if test="gongjijinbase != null" >
+        gongjijinbase = #{gongjijinbase,jdbcType=INTEGER},
+      </if>
+      <if test="gongjijinper != null" >
+        gongjijinper = #{gongjijinper,jdbcType=REAL},
+      </if>
+      <if test="lostjobbase != null" >
+        lostjobbase = #{lostjobbase,jdbcType=INTEGER},
+      </if>
+      <if test="lostjobper != null" >
+        lostjobper = #{lostjobper,jdbcType=REAL},
+      </if>
+      <if test="hurtbase != null" >
+        hurtbase = #{hurtbase,jdbcType=INTEGER},
+      </if>
+      <if test="hurtper != null" >
+        hurtper = #{hurtper,jdbcType=REAL},
+      </if>
+      <if test="babybase != null" >
+        babybase = #{babybase,jdbcType=INTEGER},
+      </if>
+      <if test="babyper != null" >
+        babyper = #{babyper,jdbcType=REAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+      and createdate = #{createdate,jdbcType=TIMESTAMP}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fanfan.hr.pojo.Salary" >
+    update salary
+    set basic = #{basic,jdbcType=INTEGER},
+      award = #{award,jdbcType=INTEGER},
+      lunch = #{lunch,jdbcType=INTEGER},
+      traffic = #{traffic,jdbcType=INTEGER},
+      allsalary = #{allsalary,jdbcType=INTEGER},
+      yanglaobase = #{yanglaobase,jdbcType=INTEGER},
+      yanglaoper = #{yanglaoper,jdbcType=REAL},
+      yiliaobase = #{yiliaobase,jdbcType=INTEGER},
+      yiliaoper = #{yiliaoper,jdbcType=REAL},
+      gongjijinbase = #{gongjijinbase,jdbcType=INTEGER},
+      gongjijinper = #{gongjijinper,jdbcType=REAL},
+      lostjobbase = #{lostjobbase,jdbcType=INTEGER},
+      lostjobper = #{lostjobper,jdbcType=REAL},
+      hurtbase = #{hurtbase,jdbcType=INTEGER},
+      hurtper = #{hurtper,jdbcType=REAL},
+      babybase = #{babybase,jdbcType=INTEGER},
+      babyper = #{babyper,jdbcType=REAL}
+    where id = #{id,jdbcType=INTEGER}
+      and createdate = #{createdate,jdbcType=TIMESTAMP}
+  </update>
+</mapper>

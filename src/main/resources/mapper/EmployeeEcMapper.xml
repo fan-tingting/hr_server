@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fanfan.hr.mapper.EmployeeEcMapper" >
+  <resultMap id="BaseResultMap" type="com.fanfan.hr.pojo.EmployeeEc" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="eid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ecdate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="ecreason" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ecpoint" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ectype" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, eid, ecdate, ecreason, ecpoint, ectype, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from employee_ec
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from employee_ec
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fanfan.hr.pojo.EmployeeEc" >
+    insert into employee_ec (id, eid, ecdate, 
+      ecreason, ecpoint, ectype, 
+      remark)
+    values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}, #{ecdate,jdbcType=DATE}, 
+      #{ecreason,jdbcType=VARCHAR}, #{ecpoint,jdbcType=INTEGER}, #{ectype,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fanfan.hr.pojo.EmployeeEc" >
+    insert into employee_ec
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="eid != null" >
+        eid,
+      </if>
+      <if test="ecdate != null" >
+        ecdate,
+      </if>
+      <if test="ecreason != null" >
+        ecreason,
+      </if>
+      <if test="ecpoint != null" >
+        ecpoint,
+      </if>
+      <if test="ectype != null" >
+        ectype,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="eid != null" >
+        #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="ecdate != null" >
+        #{ecdate,jdbcType=DATE},
+      </if>
+      <if test="ecreason != null" >
+        #{ecreason,jdbcType=VARCHAR},
+      </if>
+      <if test="ecpoint != null" >
+        #{ecpoint,jdbcType=INTEGER},
+      </if>
+      <if test="ectype != null" >
+        #{ectype,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fanfan.hr.pojo.EmployeeEc" >
+    update employee_ec
+    <set >
+      <if test="eid != null" >
+        eid = #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="ecdate != null" >
+        ecdate = #{ecdate,jdbcType=DATE},
+      </if>
+      <if test="ecreason != null" >
+        ecreason = #{ecreason,jdbcType=VARCHAR},
+      </if>
+      <if test="ecpoint != null" >
+        ecpoint = #{ecpoint,jdbcType=INTEGER},
+      </if>
+      <if test="ectype != null" >
+        ectype = #{ectype,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fanfan.hr.pojo.EmployeeEc" >
+    update employee_ec
+    set eid = #{eid,jdbcType=INTEGER},
+      ecdate = #{ecdate,jdbcType=DATE},
+      ecreason = #{ecreason,jdbcType=VARCHAR},
+      ecpoint = #{ecpoint,jdbcType=INTEGER},
+      ectype = #{ectype,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

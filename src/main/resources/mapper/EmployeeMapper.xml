@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fanfan.hr.mapper.EmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.fanfan.hr.pojo.Employee" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sex" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="birthday" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="idcard" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="wedding" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="nation" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="place" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="politic" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="department" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="position" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="engageform" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="education" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="major" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="school" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="begindate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="workstate" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="workID" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="paperlimit" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="conversiondate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="leavedate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="beginpaperdate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="endpaperdate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="workage" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, sex, birthday, idcard, wedding, nation, place, politic, email, phone, address,
+    department, position, engageform, education, major, school, begindate, workstate,
+    workID, paperlimit, conversiondate, leavedate, beginpaperdate, endpaperdate, workage
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from employee
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from employee
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fanfan.hr.pojo.Employee" >
+    insert into employee (id, name, sex, birthday,
+      idcard, wedding, nation,
+      place, politic, email,
+      phone, address, department,
+      position, engageform, education,
+      major, school, begindate,
+      workstate, workID, paperlimit,
+      conversiondate, leavedate, beginpaperdate,
+      endpaperdate, workage)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, #{birthday,jdbcType=DATE},
+      #{idcard,jdbcType=CHAR}, #{wedding,jdbcType=CHAR}, #{nation,jdbcType=CHAR},
+      #{place,jdbcType=VARCHAR}, #{politic,jdbcType=CHAR}, #{email,jdbcType=VARCHAR},
+      #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{department,jdbcType=INTEGER},
+      #{position,jdbcType=INTEGER}, #{engageform,jdbcType=VARCHAR}, #{education,jdbcType=CHAR},
+      #{major,jdbcType=VARCHAR}, #{school,jdbcType=VARCHAR}, #{begindate,jdbcType=DATE},
+      #{workstate,jdbcType=CHAR}, #{workid,jdbcType=CHAR}, #{paperlimit,jdbcType=DOUBLE},
+      #{conversiondate,jdbcType=DATE}, #{leavedate,jdbcType=DATE}, #{beginpaperdate,jdbcType=DATE},
+      #{endpaperdate,jdbcType=DATE}, #{workage,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fanfan.hr.pojo.Employee" >
+    insert into employee
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="idcard != null" >
+        idcard,
+      </if>
+      <if test="wedding != null" >
+        wedding,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="place != null" >
+        place,
+      </if>
+      <if test="politic != null" >
+        politic,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="department != null" >
+        department,
+      </if>
+      <if test="position != null" >
+        position,
+      </if>
+      <if test="engageform != null" >
+        engageform,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="major != null" >
+        major,
+      </if>
+      <if test="school != null" >
+        school,
+      </if>
+      <if test="begindate != null" >
+        begindate,
+      </if>
+      <if test="workstate != null" >
+        workstate,
+      </if>
+      <if test="workid != null" >
+        workID,
+      </if>
+      <if test="paperlimit != null" >
+        paperlimit,
+      </if>
+      <if test="conversiondate != null" >
+        conversiondate,
+      </if>
+      <if test="leavedate != null" >
+        leavedate,
+      </if>
+      <if test="beginpaperdate != null" >
+        beginpaperdate,
+      </if>
+      <if test="endpaperdate != null" >
+        endpaperdate,
+      </if>
+      <if test="workage != null" >
+        workage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=CHAR},
+      </if>
+      <if test="wedding != null" >
+        #{wedding,jdbcType=CHAR},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=CHAR},
+      </if>
+      <if test="place != null" >
+        #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="politic != null" >
+        #{politic,jdbcType=CHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=INTEGER},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="engageform != null" >
+        #{engageform,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=CHAR},
+      </if>
+      <if test="major != null" >
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null" >
+        #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="begindate != null" >
+        #{begindate,jdbcType=DATE},
+      </if>
+      <if test="workstate != null" >
+        #{workstate,jdbcType=CHAR},
+      </if>
+      <if test="workid != null" >
+        #{workid,jdbcType=CHAR},
+      </if>
+      <if test="paperlimit != null" >
+        #{paperlimit,jdbcType=DOUBLE},
+      </if>
+      <if test="conversiondate != null" >
+        #{conversiondate,jdbcType=DATE},
+      </if>
+      <if test="leavedate != null" >
+        #{leavedate,jdbcType=DATE},
+      </if>
+      <if test="beginpaperdate != null" >
+        #{beginpaperdate,jdbcType=DATE},
+      </if>
+      <if test="endpaperdate != null" >
+        #{endpaperdate,jdbcType=DATE},
+      </if>
+      <if test="workage != null" >
+        #{workage,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fanfan.hr.pojo.Employee" >
+    update employee
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="idcard != null" >
+        idcard = #{idcard,jdbcType=CHAR},
+      </if>
+      <if test="wedding != null" >
+        wedding = #{wedding,jdbcType=CHAR},
+      </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=CHAR},
+      </if>
+      <if test="place != null" >
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="politic != null" >
+        politic = #{politic,jdbcType=CHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null" >
+        department = #{department,jdbcType=INTEGER},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="engageform != null" >
+        engageform = #{engageform,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        education = #{education,jdbcType=CHAR},
+      </if>
+      <if test="major != null" >
+        major = #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="school != null" >
+        school = #{school,jdbcType=VARCHAR},
+      </if>
+      <if test="begindate != null" >
+        begindate = #{begindate,jdbcType=DATE},
+      </if>
+      <if test="workstate != null" >
+        workstate = #{workstate,jdbcType=CHAR},
+      </if>
+      <if test="workid != null" >
+        workID = #{workid,jdbcType=CHAR},
+      </if>
+      <if test="paperlimit != null" >
+        paperlimit = #{paperlimit,jdbcType=DOUBLE},
+      </if>
+      <if test="conversiondate != null" >
+        conversiondate = #{conversiondate,jdbcType=DATE},
+      </if>
+      <if test="leavedate != null" >
+        leavedate = #{leavedate,jdbcType=DATE},
+      </if>
+      <if test="beginpaperdate != null" >
+        beginpaperdate = #{beginpaperdate,jdbcType=DATE},
+      </if>
+      <if test="endpaperdate != null" >
+        endpaperdate = #{endpaperdate,jdbcType=DATE},
+      </if>
+      <if test="workage != null" >
+        workage = #{workage,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fanfan.hr.pojo.Employee" >
+    update employee
+    set name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      idcard = #{idcard,jdbcType=CHAR},
+      wedding = #{wedding,jdbcType=CHAR},
+      nation = #{nation,jdbcType=CHAR},
+      place = #{place,jdbcType=VARCHAR},
+      politic = #{politic,jdbcType=CHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      department = #{department,jdbcType=INTEGER},
+      position = #{position,jdbcType=VARCHAR},
+      engageform = #{engageform,jdbcType=VARCHAR},
+      education = #{education,jdbcType=CHAR},
+      major = #{major,jdbcType=VARCHAR},
+      school = #{school,jdbcType=VARCHAR},
+      begindate = #{begindate,jdbcType=DATE},
+      workstate = #{workstate,jdbcType=CHAR},
+      workID = #{workid,jdbcType=CHAR},
+      paperlimit = #{paperlimit,jdbcType=DOUBLE},
+      conversiondate = #{conversiondate,jdbcType=DATE},
+      leavedate = #{leavedate,jdbcType=DATE},
+      beginpaperdate = #{beginpaperdate,jdbcType=DATE},
+      endpaperdate = #{endpaperdate,jdbcType=DATE},
+      workage = #{workage,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getEmpinfo" parameterType="com.fanfan.hr.common.EmpinfoInputDTO"
+      resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+        employee
+    WHERE 1 = 1
+    <if test="workid != null and workid != ''">
+      and workID = #{workid,jdbcType=VARCHAR}
+    </if>
+    LIMIT #{beginPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <select id="getEmpinfoTotalCount" parameterType="com.fanfan.hr.common.EmpinfoInputDTO"
+      resultType="java.lang.Integer">
+    SELECT
+        count(*)
+    FROM
+    employee
+    WHERE 1 = 1
+    <if test="workid != null and workid != ''">
+      and workID = #{workid,jdbcType=VARCHAR}
+    </if>
+  </select>
+</mapper>

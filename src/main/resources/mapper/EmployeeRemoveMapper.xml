@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fanfan.hr.mapper.EmployeeRemoveMapper" >
+  <resultMap id="BaseResultMap" type="com.fanfan.hr.pojo.EmployeeRemove" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="eid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="afterdepartment" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="afterjob" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="removedate" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="reason" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, eid, afterdepartment, afterjob, removedate, reason, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from employee_remove
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from employee_remove
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fanfan.hr.pojo.EmployeeRemove" >
+    insert into employee_remove (id, eid, afterdepartment, 
+      afterjob, removedate, reason, 
+      remark)
+    values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}, #{afterdepartment,jdbcType=INTEGER}, 
+      #{afterjob,jdbcType=INTEGER}, #{removedate,jdbcType=DATE}, #{reason,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fanfan.hr.pojo.EmployeeRemove" >
+    insert into employee_remove
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="eid != null" >
+        eid,
+      </if>
+      <if test="afterdepartment != null" >
+        afterdepartment,
+      </if>
+      <if test="afterjob != null" >
+        afterjob,
+      </if>
+      <if test="removedate != null" >
+        removedate,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="eid != null" >
+        #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="afterdepartment != null" >
+        #{afterdepartment,jdbcType=INTEGER},
+      </if>
+      <if test="afterjob != null" >
+        #{afterjob,jdbcType=INTEGER},
+      </if>
+      <if test="removedate != null" >
+        #{removedate,jdbcType=DATE},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fanfan.hr.pojo.EmployeeRemove" >
+    update employee_remove
+    <set >
+      <if test="eid != null" >
+        eid = #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="afterdepartment != null" >
+        afterdepartment = #{afterdepartment,jdbcType=INTEGER},
+      </if>
+      <if test="afterjob != null" >
+        afterjob = #{afterjob,jdbcType=INTEGER},
+      </if>
+      <if test="removedate != null" >
+        removedate = #{removedate,jdbcType=DATE},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fanfan.hr.pojo.EmployeeRemove" >
+    update employee_remove
+    set eid = #{eid,jdbcType=INTEGER},
+      afterdepartment = #{afterdepartment,jdbcType=INTEGER},
+      afterjob = #{afterjob,jdbcType=INTEGER},
+      removedate = #{removedate,jdbcType=DATE},
+      reason = #{reason,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
