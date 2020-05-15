@@ -4,6 +4,8 @@ import com.fanfan.hr.common.EmpEcResultDTO;
 import com.fanfan.hr.common.EmpinfoInputDTO;
 import com.fanfan.hr.common.JsonResult;
 import com.fanfan.hr.mapper.EmployeeEcMapper;
+import com.fanfan.hr.mapper.EmployeeMapper;
+import com.fanfan.hr.pojo.Employee;
 import com.fanfan.hr.pojo.EmployeeEc;
 import com.fanfan.hr.service.EmpEcService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ public class EmpEcServiceImpl implements EmpEcService {
 
     @Autowired
     private EmployeeEcMapper employeeEcMapper;
+    @Autowired
+    private EmployeeMapper employeeMapper;
 
     @Override
     public JsonResult getEcList(EmpinfoInputDTO empinfoInputDTO) {
@@ -37,6 +41,12 @@ public class EmpEcServiceImpl implements EmpEcService {
     @Override
     public JsonResult addEmpEc(EmployeeEc employeeEc) {
         JsonResult jsonResult = new JsonResult();
+        Employee employee = employeeMapper.selectByPrimaryKey(employeeEc.getEid());
+        if(employee == null) {
+            jsonResult.setData(false);
+            jsonResult.setMessage("员工不存在,新增失败");
+            return jsonResult;
+        }
         if(employeeEcMapper.insert(employeeEc) > 0) {
             jsonResult.setMessage("新增成功");
             jsonResult.setData(true);

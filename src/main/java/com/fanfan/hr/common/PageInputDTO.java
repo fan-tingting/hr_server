@@ -9,7 +9,7 @@ public class PageInputDTO {
     private Integer beginPage;
 
     public void resetBeginPage() {
-        this.beginPage = (this.page - 1) * this.pageSize;
+        this.beginPage = ((this.page - 1) * this.pageSize);
     }
 
     public Integer getPage() {
