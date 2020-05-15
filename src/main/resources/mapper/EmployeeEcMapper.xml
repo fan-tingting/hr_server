@@ -116,4 +116,16 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getEcList" parameterType="com.fanfan.hr.common.EmpinfoInputDTO"
+      resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+        employee_ec ee
+    WHERE
+        eid = #{id,jdbcType=INTEGER}
+    ORDER BY
+        id ASC
+    LIMIT #{beginPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
 </mapper>
