@@ -33,14 +33,14 @@ public class EmpinfoServiceImpl implements EmpinfoService {
         inputDTO.setBeginPage((inputDTO.getPage() - 1) * inputDTO.getPageSize());
         List<Employee> employeeList = employeeMapper.getEmpinfo(inputDTO);
         int totalCount = 0;
-        if(employeeList != null && employeeList.size() > 0) {
+        if (employeeList != null && employeeList.size() > 0) {
             int empDepartmentId = 0;
             int empPositionId = 0;
-            for(int i =0; i < employeeList.size(); i++){
+            for (int i = 0; i < employeeList.size(); i++) {
                 Employee employee = employeeList.get(i);
                 //employee.setNationZh(NationEnum.getValue(employee.getNation()));
                 //employee.setPoliticZh(PoliticEnum.getValue(employee.getPolitic()));
-                empDepartmentId =employee.getDepartment();
+                empDepartmentId = employee.getDepartment();
                 empPositionId = employee.getPosition();
                 Department department = departmentMapper.selectByPrimaryKey(empDepartmentId);
                 Position position = positionMapper.selectByPrimaryKey(empPositionId);
@@ -59,12 +59,12 @@ public class EmpinfoServiceImpl implements EmpinfoService {
 
     //新增员工
     @Override
-    public JsonResult addEmp(EmployeeDTO input){
+    public JsonResult addEmp(EmployeeDTO input) {
         JsonResult jsonResult = new JsonResult();
         Employee employee = new Employee();
         //字符串转date
-        replaceAll(input,employee);
-        if(employeeMapper.insert(employee)>0){
+        replaceAll(input, employee);
+        if (employeeMapper.insert(employee) > 0) {
             jsonResult.setMessage("新增成功");
             jsonResult.setData(true);
             return jsonResult;
@@ -76,12 +76,12 @@ public class EmpinfoServiceImpl implements EmpinfoService {
 
     //编辑员工
     @Override
-    public JsonResult editEmp(EmployeeDTO input){
+    public JsonResult editEmp(EmployeeDTO input) {
         JsonResult jsonResult = new JsonResult();
         Employee employee = new Employee();
         //字符串转date
-        replaceAll(input,employee);
-        if(employeeMapper.updateByPrimaryKeySelective(employee)>0){
+        replaceAll(input, employee);
+        if (employeeMapper.updateByPrimaryKeySelective(employee) > 0) {
             jsonResult.setMessage("修改成功");
             jsonResult.setData(true);
             return jsonResult;
@@ -92,8 +92,8 @@ public class EmpinfoServiceImpl implements EmpinfoService {
     }
 
 
-    private void replaceAll(EmployeeDTO input,Employee employee) {
-        //employee.setId(50);
+    private void replaceAll(EmployeeDTO input, Employee employee) {
+        employee.setId(input.getId());
         //1
         employee.setName(input.getName());
         employee.setSex(input.getSex());
