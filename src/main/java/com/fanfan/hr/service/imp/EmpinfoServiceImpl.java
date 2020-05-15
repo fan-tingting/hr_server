@@ -91,6 +91,19 @@ public class EmpinfoServiceImpl implements EmpinfoService {
         return jsonResult;
     }
 
+    @Override
+    public JsonResult deleteEmpInfo(Integer id) {
+        JsonResult jsonResult = new JsonResult();
+        if(employeeMapper.deleteByPrimaryKey(id) > 1) {
+            jsonResult.setData(true);
+            jsonResult.setMessage("删除成功");
+            return jsonResult;
+        }
+        jsonResult.setData(false);
+        jsonResult.setMessage("删除失败");
+        return jsonResult;
+    }
+
 
     private void replaceAll(EmployeeDTO input, Employee employee) {
         employee.setId(input.getId());

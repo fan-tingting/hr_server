@@ -13,4 +13,5 @@ public interface EmpinfoService {
 
     public JsonResult editEmp(EmployeeDTO input);
 
+    JsonResult deleteEmpInfo(Integer id);
 }

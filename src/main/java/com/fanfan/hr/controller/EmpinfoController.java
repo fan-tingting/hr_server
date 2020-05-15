@@ -41,8 +41,13 @@ public class EmpinfoController {
 
     @PostMapping("/editempinfo")
     public JsonResult editEmpinfo(@RequestBody EmployeeDTO input) {
-        JsonResult result = new JsonResult();
         return empinfoService.editEmp(input);
+    }
+
+
+    @PostMapping("/deleteEmpInfo")
+    public JsonResult deleteEmpInfo(@RequestBody EmployeeDTO input) {
+        return empinfoService.deleteEmpInfo(input.getId());
     }
 
 }
