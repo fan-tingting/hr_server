@@ -78,4 +78,16 @@
       enabled = #{enabled,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getPositionList" parameterType="com.fanfan.hr.common.SelectValue"
+          resultType="com.fanfan.hr.common.SelectValue">
+    SELECT DISTINCT
+        id value,
+        name label
+    FROM
+        position
+    where 1 = 1
+    <if test="value != null">
+      and department = #{value,jdbcType=INTEGER}
+    </if>
+  </select>
 </mapper>

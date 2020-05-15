@@ -1,14 +1,12 @@
 package com.fanfan.hr.controller;
 
-import com.fanfan.hr.common.EmpinfoInputDTO;
-import com.fanfan.hr.common.EmployeeDTO;
-import com.fanfan.hr.common.JsonResult;
-import com.fanfan.hr.common.LoginInputDTO;
+import com.fanfan.hr.common.*;
 import com.fanfan.hr.common.util.IntegerUtil;
 import com.fanfan.hr.pojo.Employee;
 import com.fanfan.hr.service.DepartMentService;
 import com.fanfan.hr.service.EmpinfoService;
 import com.fanfan.hr.service.LoginService;
+import com.fanfan.hr.service.PositionService;
 import com.mysql.cj.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +24,8 @@ public class EmpinfoController {
     private EmpinfoService empinfoService;
     @Autowired
     private DepartMentService departMentService;
+    @Autowired
+    private PositionService positionService;
 
     @GetMapping("/basicinfo")
     public JsonResult getEmpinfo(EmpinfoInputDTO inputDTO) {
@@ -56,4 +56,8 @@ public class EmpinfoController {
         return departMentService.getDepartMentList();
     }
 
+    @GetMapping("/getPositionList")
+    public JsonResult getPositionList(SelectValue selectValue) {
+        return positionService.getPositionList(selectValue);
+    }
 }
