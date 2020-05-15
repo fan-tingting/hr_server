@@ -258,4 +258,21 @@
     where id = #{id,jdbcType=INTEGER}
       and createdate = #{createdate,jdbcType=TIMESTAMP}
   </update>
+  <select id="getSalaryList" parameterType="com.fanfan.hr.common.PageInputDTO"
+      resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+        salary
+    ORDER BY
+        id ASC
+    LIMIT #{beginPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <select id="getAllSalaryCount" parameterType="com.fanfan.hr.common.PageInputDTO"
+          resultType="java.lang.Integer">
+    SELECT
+    count(*)
+    FROM
+    salary
+  </select>
 </mapper>

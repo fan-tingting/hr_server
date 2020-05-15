@@ -50,4 +50,22 @@ public class PositionServiceImpl implements PositionService {
         }
         return jsonResult.ok(false,"新增失败");
     }
+
+    @Override
+    public JsonResult updatePosition(Position position) {
+        JsonResult jsonResult = new JsonResult();
+        if(positionMapper.updateByPrimaryKeySelective(position) > 0) {
+            return jsonResult.ok(true,"修改成功");
+        }
+        return jsonResult.ok(false,"修改失败");
+    }
+
+    @Override
+    public JsonResult deletePosition(Integer id) {
+        JsonResult jsonResult = new JsonResult();
+        if(positionMapper.deleteByPrimaryKey(id) > 0) {
+            return jsonResult.ok(true,"删除成功");
+        }
+        return jsonResult.ok(false,"删除失败");
+    }
 }

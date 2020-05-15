@@ -12,4 +12,8 @@ public interface PositionService {
      JsonResult getPositionList(PageInputDTO pageInputDTO);
 
      JsonResult addPosition(Position position);
+
+     JsonResult updatePosition(Position position);
+
+     JsonResult deletePosition(Integer id);
 }

@@ -17,13 +17,24 @@ public class PositionController {
     @Autowired
     private PositionService positionService;
 
-    @GetMapping
+    @GetMapping("/getPositionList")
     public JsonResult getPositionList(PageInputDTO pageInputDTO) {
         return positionService.getPositionList(pageInputDTO);
     }
 
-    @PostMapping
-    public JsonResult addPosition(Position position) {
+    @PostMapping("/addPostion")
+    public JsonResult addPosition(@RequestBody Position position) {
         return positionService.addPosition(position);
     }
+
+    @PostMapping("/updatePosition")
+    public JsonResult updatePosition(@RequestBody Position position) {
+        return positionService.updatePosition(position);
+    }
+
+    @PostMapping("/deletePosition")
+    public JsonResult deletePosition(@RequestBody Position position) {
+        return positionService.deletePosition(position.getId());
+    }
+
 }
