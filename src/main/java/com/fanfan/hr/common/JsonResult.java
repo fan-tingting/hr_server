@@ -21,4 +21,10 @@ public class JsonResult<T> {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    public JsonResult<T> ok(T data,String message) {
+        this.data = data;
+        this.message = message;
+        return this;
+    }
 }

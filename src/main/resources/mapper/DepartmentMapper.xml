@@ -77,4 +77,21 @@
     FROM
         department
   </select>
+  <select id="getDepartmentList" parameterType="com.fanfan.hr.common.PageInputDTO"
+    resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+        department
+    ORDER BY
+        id ASC
+    LIMIT #{beginPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <select id="getAllDepartmentCount" parameterType="com.fanfan.hr.common.PageInputDTO"
+    resultType="java.lang.Integer">
+    SELECT
+    count(*)
+    FROM
+    department
+  </select>
 </mapper>

@@ -1,5 +1,7 @@
 package com.fanfan.hr.mapper;
 
+import com.fanfan.hr.common.PageInputDTO;
+import com.fanfan.hr.common.PositionDTO;
 import com.fanfan.hr.common.SelectValue;
 import com.fanfan.hr.pojo.Position;
 
@@ -19,4 +21,8 @@ public interface PositionMapper {
     int updateByPrimaryKey(Position record);
 
     List<SelectValue> getPositionList(SelectValue selectValue);
+
+    List<PositionDTO> getPositionLists(PageInputDTO pageInputDTO);
+
+    Integer getAllPositionList(PageInputDTO pageInputDTO);
 }

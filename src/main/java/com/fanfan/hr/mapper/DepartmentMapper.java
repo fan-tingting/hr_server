@@ -1,5 +1,6 @@
 package com.fanfan.hr.mapper;
 
+import com.fanfan.hr.common.PageInputDTO;
 import com.fanfan.hr.common.SelectValue;
 import com.fanfan.hr.pojo.Department;
 
@@ -19,4 +20,8 @@ public interface DepartmentMapper {
     int updateByPrimaryKey(Department record);
 
     List<SelectValue> getDepartMentList();
+
+    List<Department> getDepartmentList(PageInputDTO pageInputDTO);
+
+    Integer getAllDepartmentCount(PageInputDTO pageInputDTO);
 }

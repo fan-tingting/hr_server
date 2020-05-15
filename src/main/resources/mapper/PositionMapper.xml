@@ -90,4 +90,25 @@
       and department = #{value,jdbcType=INTEGER}
     </if>
   </select>
+  <select id="getPositionLists" parameterType="com.fanfan.hr.common.PageInputDTO"
+    resultType="com.fanfan.hr.common.PositionDTO">
+        SELECT
+            p.id pid,
+            p. NAME positionName,
+            d.`name` departmentName,
+            d.id did
+        FROM
+            position p
+        LEFT JOIN department d ON d.id = p.department
+        order by p.id asc
+        limit #{beginPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <select id="getAllPositionList" parameterType="com.fanfan.hr.common.PageInputDTO"
+    resultType="java.lang.Integer">
+     SELECT
+            count(*)
+     FROM
+            position p
+     LEFT JOIN department d ON d.id = p.department
+  </select>
 </mapper>
