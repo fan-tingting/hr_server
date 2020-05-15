@@ -12,6 +12,8 @@ public class EmployeeEc {
     private String name;
 
     private Date ecdate;
+    //前端传递的ecdate参数写入到ecdateStr中。ecdate前端不赋值
+    private String ecdateStr;
 
     private String ecreason;
 
@@ -63,8 +65,8 @@ public class EmployeeEc {
         return ecdate;
     }
 
-    public void setEcdate(String ecdate) {
-        this.ecdate = StringUtil.getDateFromStr(ecdate);
+    public void setEcdate(Date ecdate) {
+        this.ecdate = ecdate;
     }
 
     public String getEcreason() {
@@ -97,5 +99,14 @@ public class EmployeeEc {
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+
+    public String getEcdateStr() {
+        return ecdateStr;
+    }
+
+    public void setEcdateStr(String ecdateStr) {
+        this.ecdateStr = ecdateStr;
+        this.ecdate = StringUtil.getDateFromStr(ecdateStr);
     }
 }

@@ -41,4 +41,13 @@ public class PositionServiceImpl implements PositionService {
         pageResultDTO.setTotalCount(totalCount);
         return jsonResult.ok(pageResultDTO,"获取职位列表成功");
     }
+
+    @Override
+    public JsonResult addPosition(Position position) {
+        JsonResult jsonResult = new JsonResult();
+        if(positionMapper.insert(position) > 0) {
+            return jsonResult.ok(true,"新增成功");
+        }
+        return jsonResult.ok(false,"新增失败");
+    }
 }

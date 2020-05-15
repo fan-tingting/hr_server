@@ -3,6 +3,7 @@ package com.fanfan.hr.controller;
 import com.fanfan.hr.common.JsonResult;
 import com.fanfan.hr.common.PageInputDTO;
 import com.fanfan.hr.pojo.Department;
+import com.fanfan.hr.pojo.Position;
 import com.fanfan.hr.service.DepartMentService;
 import com.fanfan.hr.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,10 @@ public class PositionController {
     @GetMapping
     public JsonResult getPositionList(PageInputDTO pageInputDTO) {
         return positionService.getPositionList(pageInputDTO);
+    }
+
+    @PostMapping
+    public JsonResult addPosition(Position position) {
+        return positionService.addPosition(position);
     }
 }
