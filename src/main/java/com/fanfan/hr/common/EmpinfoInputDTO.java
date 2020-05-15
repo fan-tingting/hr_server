@@ -6,17 +6,9 @@ public class EmpinfoInputDTO {
 
     private Integer pageSize;
 
-    private String workid;
+    private Integer id;
 
     private Integer beginPage;
-
-    public String getWorkid() {
-        return workid;
-    }
-
-    public void setWorkid(String workid) {
-        this.workid = workid;
-    }
 
     public Integer getPage() {
         return page;
@@ -40,5 +32,13 @@ public class EmpinfoInputDTO {
 
     public void setBeginPage(Integer beginPage) {
         this.beginPage = beginPage;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

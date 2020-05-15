@@ -38,8 +38,6 @@ public class EmpinfoServiceImpl implements EmpinfoService {
             int empPositionId = 0;
             for (int i = 0; i < employeeList.size(); i++) {
                 Employee employee = employeeList.get(i);
-                //employee.setNationZh(NationEnum.getValue(employee.getNation()));
-                //employee.setPoliticZh(PoliticEnum.getValue(employee.getPolitic()));
                 empDepartmentId = employee.getDepartment();
                 empPositionId = employee.getPosition();
                 Department department = departmentMapper.selectByPrimaryKey(empDepartmentId);
@@ -94,7 +92,7 @@ public class EmpinfoServiceImpl implements EmpinfoService {
     @Override
     public JsonResult deleteEmpInfo(Integer id) {
         JsonResult jsonResult = new JsonResult();
-        if(employeeMapper.deleteByPrimaryKey(id) > 1) {
+        if(employeeMapper.deleteByPrimaryKey(id) > 0) {
             jsonResult.setData(true);
             jsonResult.setMessage("删除成功");
             return jsonResult;

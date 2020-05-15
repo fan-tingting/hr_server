@@ -6,6 +6,7 @@ import com.fanfan.hr.common.JsonResult;
 import com.fanfan.hr.common.LoginInputDTO;
 import com.fanfan.hr.common.util.IntegerUtil;
 import com.fanfan.hr.pojo.Employee;
+import com.fanfan.hr.service.DepartMentService;
 import com.fanfan.hr.service.EmpinfoService;
 import com.fanfan.hr.service.LoginService;
 import com.mysql.cj.util.StringUtils;
@@ -23,6 +24,8 @@ public class EmpinfoController {
 
     @Autowired
     private EmpinfoService empinfoService;
+    @Autowired
+    private DepartMentService departMentService;
 
     @GetMapping("/basicinfo")
     public JsonResult getEmpinfo(EmpinfoInputDTO inputDTO) {
@@ -35,7 +38,6 @@ public class EmpinfoController {
     }
     @PostMapping("/addempinfo")
     public JsonResult addEmpinfo(@RequestBody EmployeeDTO input) {
-        JsonResult result = new JsonResult();
         return empinfoService.addEmp(input);
     }
 
@@ -44,10 +46,14 @@ public class EmpinfoController {
         return empinfoService.editEmp(input);
     }
 
-
     @PostMapping("/deleteEmpInfo")
     public JsonResult deleteEmpInfo(@RequestBody EmployeeDTO input) {
         return empinfoService.deleteEmpInfo(input.getId());
+    }
+
+    @GetMapping("/getDepartMentList")
+    public JsonResult getDepartMentList() {
+        return departMentService.getDepartMentList();
     }
 
 }

@@ -7,11 +7,11 @@ import com.fanfan.hr.pojo.Employee;
 
 public interface EmpinfoService {
 
-    public JsonResult getEmpinfo(EmpinfoInputDTO inputDTO);
+    JsonResult getEmpinfo(EmpinfoInputDTO inputDTO);
 
-    public JsonResult addEmp(EmployeeDTO input);
+    JsonResult addEmp(EmployeeDTO input);
 
-    public JsonResult editEmp(EmployeeDTO input);
+    JsonResult editEmp(EmployeeDTO input);
 
     JsonResult deleteEmpInfo(Integer id);
 }

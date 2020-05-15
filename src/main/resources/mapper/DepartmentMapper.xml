@@ -70,4 +70,11 @@
       enabled = #{enabled,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getDepartMentList" resultType="com.fanfan.hr.common.SelectValue">
+    SELECT DISTINCT
+        id value,
+        name label
+    FROM
+        department
+  </select>
 </mapper>
