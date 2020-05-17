@@ -46,6 +46,9 @@ public class DepartMentServiceImpl implements DepartMentService {
     @Override
     public JsonResult addDepartmentList(Department department) {
         JsonResult jsonResult = new JsonResult();
+        if(department != null) {
+            department.setEnabled(false);
+        }
         if(departmentMapper.insert(department) > 0) {
             return jsonResult.ok(true,"新增成功");
         }

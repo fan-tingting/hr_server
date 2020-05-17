@@ -10,7 +10,7 @@ import com.fanfan.hr.service.EmpEcService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/ec")
+@RequestMapping("/dp")
 @RestController
 @CrossOrigin("http://localhost:8080")
 public class DepartmentController {
@@ -18,7 +18,7 @@ public class DepartmentController {
    @Autowired
     private DepartMentService departMentService;
 
-   @GetMapping("/getDepartmentList")
+   @GetMapping("/getDepartment")
     public JsonResult getDepartmentList(PageInputDTO pageInputDTO) {
        return departMentService.getDepartmentList(pageInputDTO);
    }

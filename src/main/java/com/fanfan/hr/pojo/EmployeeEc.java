@@ -1,6 +1,7 @@
 package com.fanfan.hr.pojo;
 
 import com.fanfan.hr.common.util.StringUtil;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
@@ -10,7 +11,7 @@ public class EmployeeEc {
     private Integer eid;
 
     private String name;
-
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date ecdate;
     //前端传递的ecdate参数写入到ecdateStr中。ecdate前端不赋值
     private String ecdateStr;
@@ -107,6 +108,7 @@ public class EmployeeEc {
 
     public void setEcdateStr(String ecdateStr) {
         this.ecdateStr = ecdateStr;
+        //如果ecdateStr传一个null 会出问题，判断是否为null
         this.ecdate = StringUtil.getDateFromStr(ecdateStr);
     }
 }

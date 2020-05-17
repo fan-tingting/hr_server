@@ -24,7 +24,7 @@ public class EmpEcServiceImpl implements EmpEcService {
     @Override
     public JsonResult getEcList(EmpinfoInputDTO empinfoInputDTO) {
         JsonResult jsonResult = new JsonResult();
-        empinfoInputDTO.setBeginPage((empinfoInputDTO.getPage() - 1) * empinfoInputDTO.getPage());
+        empinfoInputDTO.setBeginPage((empinfoInputDTO.getPage() - 1) * empinfoInputDTO.getPageSize());
         EmpEcResultDTO resultDTO = new EmpEcResultDTO();
         List<EmployeeEc> employeeEcList = employeeEcMapper.getEcList(empinfoInputDTO);
         resultDTO.setEmployeeEcList(employeeEcList);
@@ -60,7 +60,7 @@ public class EmpEcServiceImpl implements EmpEcService {
     @Override
     public JsonResult updateEmpEc(EmployeeEc employeeEc) {
         JsonResult jsonResult = new JsonResult();
-        if(employeeEcMapper.updateByPrimaryKeySelective(employeeEc) > 1) {
+        if(employeeEcMapper.updateByPrimaryKeySelective(employeeEc) > 0) {
             jsonResult.setData(true);
             jsonResult.setMessage("修改成功");
             return jsonResult;
