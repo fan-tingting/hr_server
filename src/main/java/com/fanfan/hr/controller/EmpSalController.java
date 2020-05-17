@@ -1,11 +1,8 @@
 package com.fanfan.hr.controller;
 
-import com.fanfan.hr.EmployeeSalInputDTO;
 import com.fanfan.hr.common.EmpSalPageInputDTO;
+import com.fanfan.hr.common.EmployeeSalInputDTO;
 import com.fanfan.hr.common.JsonResult;
-import com.fanfan.hr.common.PageInputDTO;
-import com.fanfan.hr.pojo.Employee;
-import com.fanfan.hr.pojo.EmployeeSal;
 import com.fanfan.hr.service.EmpSalService;
 import com.fanfan.hr.service.SalaryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +38,5 @@ public class EmpSalController {
     public JsonResult updateEmpSal(@RequestBody EmployeeSalInputDTO inputDTO) {
        return empSalService.updateEmpSal(inputDTO);
    }
-
 
 }

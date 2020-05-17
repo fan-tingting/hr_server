@@ -68,4 +68,8 @@
       sid = #{sid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="showEmpSalary" parameterType="com.fanfan.hr.common.EmpinfoInputDTO"
+    resultType="com.fanfan.hr.common.ShowSalaryDTO">
+
+  </select>
 </mapper>

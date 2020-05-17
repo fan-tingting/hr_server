@@ -1,9 +1,7 @@
 package com.fanfan.hr.service.imp;
 
-import com.fanfan.hr.EmployeeSalInputDTO;
-import com.fanfan.hr.common.EmpSalPageInputDTO;
-import com.fanfan.hr.common.JsonResult;
-import com.fanfan.hr.common.PageResultDTO;
+import com.fanfan.hr.common.EmployeeSalInputDTO;
+import com.fanfan.hr.common.*;
 import com.fanfan.hr.mapper.EmpSalaryMapper;
 import com.fanfan.hr.mapper.EmployeeSalMapper;
 import com.fanfan.hr.mapper.SalaryMapper;
@@ -59,6 +57,15 @@ public class EmpSalServiceImpl implements EmpSalService {
             return jsonResult.ok(true,"更新成功");
         }
         return jsonResult.ok(false,"更新失败");
+    }
+
+    @Override
+    public JsonResult showEmpSalary(EmpinfoInputDTO empinfoInputDTO) {
+        JsonResult jsonResult = new JsonResult();
+        PageResultDTO resultDTO = new PageResultDTO();
+        List<ShowSalaryDTO> showSalaryDTOS = empSalaryMapper.showEmpSalary(empinfoInputDTO);
+
+        return ;
     }
 
 

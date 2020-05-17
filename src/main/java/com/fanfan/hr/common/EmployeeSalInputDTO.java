@@ -1,4 +1,4 @@
-package com.fanfan.hr;
+package com.fanfan.hr.common;
 
 import com.fanfan.hr.pojo.EmployeeSal;
 
