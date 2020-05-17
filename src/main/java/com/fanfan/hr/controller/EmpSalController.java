@@ -1,6 +1,7 @@
 package com.fanfan.hr.controller;
 
 import com.fanfan.hr.common.EmpSalPageInputDTO;
+import com.fanfan.hr.common.EmpinfoInputDTO;
 import com.fanfan.hr.common.EmployeeSalInputDTO;
 import com.fanfan.hr.common.JsonResult;
 import com.fanfan.hr.service.EmpSalService;
@@ -39,4 +40,11 @@ public class EmpSalController {
        return empSalService.updateEmpSal(inputDTO);
    }
 
+    /**
+     * 获取工资表数据
+     */
+    @GetMapping("/showSalary")
+    public JsonResult showEmpSalary(EmpinfoInputDTO empinfoInputDTO) {
+        return empSalService.showEmpSalary(empinfoInputDTO);
+    }
 }

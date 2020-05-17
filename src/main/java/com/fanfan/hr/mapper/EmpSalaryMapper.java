@@ -20,4 +20,6 @@ public interface EmpSalaryMapper {
     int updateByPrimaryKey(EmpSalary record);
 
     List<ShowSalaryDTO> showEmpSalary(EmpinfoInputDTO empinfoInputDTO);
+
+    Integer showAllEmpSalary(EmpinfoInputDTO empinfoInputDTO);
 }

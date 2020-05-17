@@ -64,8 +64,13 @@ public class EmpSalServiceImpl implements EmpSalService {
         JsonResult jsonResult = new JsonResult();
         PageResultDTO resultDTO = new PageResultDTO();
         List<ShowSalaryDTO> showSalaryDTOS = empSalaryMapper.showEmpSalary(empinfoInputDTO);
-
-        return ;
+        Integer totalCount = 0;
+        if(showSalaryDTOS != null && showSalaryDTOS.size() > 0) {
+            totalCount = empSalaryMapper.showAllEmpSalary(empinfoInputDTO);
+        }
+        resultDTO.setTotalCount(totalCount);
+        resultDTO.setData(showSalaryDTOS);
+        return jsonResult.ok(resultDTO,"获取工资表数据成功");
     }
 
 

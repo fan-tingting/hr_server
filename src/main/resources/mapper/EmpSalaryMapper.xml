@@ -70,6 +70,44 @@
   </update>
   <select id="showEmpSalary" parameterType="com.fanfan.hr.common.EmpinfoInputDTO"
     resultType="com.fanfan.hr.common.ShowSalaryDTO">
-
+        SELECT
+            t1.*,
+            e.`name`
+        FROM
+            (
+                SELECT
+                    id,
+                    eid,
+                    IFNULL(aftersalary, beforesalary) salary
+                FROM
+                    employee_sal es
+                WHERE
+                    eid IS NOT NULL
+                <if test="id != null">
+                  and eid = #{id,jdbcType=INTEGER}
+                </if>
+            ) t1
+        LEFT JOIN employee e ON e.id = t1.eid
+        #{beginPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <select id="showAllEmpSalary" parameterType="com.fanfan.hr.common.EmpinfoInputDTO"
+    resultType="java.lang.Integer">
+    SELECT
+    count(*)
+    FROM
+    (
+    SELECT
+    id,
+    eid,
+    IFNULL(aftersalary, beforesalary) salary
+    FROM
+    employee_sal es
+    WHERE
+    eid IS NOT NULL
+    <if test="id != null">
+      and eid = #{id,jdbcType=INTEGER}
+    </if>
+    ) t1
+    LEFT JOIN employee e ON e.id = t1.eid
   </select>
 </mapper>
