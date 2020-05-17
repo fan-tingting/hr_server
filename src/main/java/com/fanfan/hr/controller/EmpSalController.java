@@ -18,7 +18,7 @@ public class EmpSalController {
    @Autowired
     private SalaryService salaryService;
 
-   @GetMapping("/geiEmpSalList")
+   @GetMapping("/getEmpSalList")
     public JsonResult getEmpSalList(EmpSalPageInputDTO empSalPageInputDTO) {
         return empSalService.getEmpSalList(empSalPageInputDTO);
    }
