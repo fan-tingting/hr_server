@@ -63,6 +63,7 @@ public class EmpinfoServiceImpl implements EmpinfoService {
         //字符串转date
         replaceAll(input, employee);
         if (employeeMapper.insert(employee) > 0) {
+            System.out.println(employee.getId());
             jsonResult.setMessage("新增成功");
             jsonResult.setData(true);
             return jsonResult;
