@@ -9,7 +9,7 @@ import com.fanfan.hr.service.SalaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("/ec")
+@RequestMapping("/sa")
 @RestController
 @CrossOrigin("http://localhost:8080")
 public class SalaryController {
