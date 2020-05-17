@@ -88,7 +88,7 @@
                 </if>
             ) t1
         LEFT JOIN employee e ON e.id = t1.eid
-        #{beginPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+        limit #{beginPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
   </select>
   <select id="showAllEmpSalary" parameterType="com.fanfan.hr.common.EmpinfoInputDTO"
     resultType="java.lang.Integer">

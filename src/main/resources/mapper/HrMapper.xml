@@ -29,6 +29,9 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.fanfan.hr.pojo.Hr" >
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into hr (id, name, phone,
       telephone, address, enabled,
       username, password, userface,
@@ -156,5 +159,19 @@
     <include refid="Base_Column_List" />
     from hr
     where username = #{username,jdbcType=VARCHAR}
+  </select>
+  <select id="getHrList" parameterType="com.fanfan.hr.common.PageInputDTO"
+    resultType="com.fanfan.hr.common.HrResultDTO">
+    select
+        hr.id,
+        hr.`name`,
+        hr.phone,
+        r.cname,
+        t1.id hrRoleId,
+        hr.enabled
+    from hr
+    LEFT JOIN hr_role t1 on t1.hrid = hr.id
+    LEFT JOIN role r on r.id = t1.rid
+    limit #{beginPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
   </select>
 </mapper>

@@ -92,4 +92,34 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getEmpTrainList" parameterType="com.fanfan.hr.common.IdPageInputDTO"
+    resultType="com.fanfan.hr.pojo.EmployeeTrain">
+        SELECT
+            et.id,
+            et.eid,
+            et.traindate trainDate,
+            et.traincontent trainContent,
+            et.remark,
+            e.`name`
+        FROM
+            employee_train et
+        LEFT JOIN employee e ON e.id = et.eid
+        where 1 = 1
+        <if test="id != null">
+          and eid = #{id,jdbcType=INTEGER}
+        </if>
+        limit #{beginPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <select id="getAllEmpTrain" parameterType="com.fanfan.hr.common.IdPageInputDTO"
+    resultType="java.lang.Integer">
+    SELECT
+        count(*)
+    FROM
+    employee_train et
+    LEFT JOIN employee e ON e.id = et.eid
+    where 1 = 1
+    <if test="id != null">
+      and eid = #{id,jdbcType=INTEGER}
+    </if>
+  </select>
 </mapper>

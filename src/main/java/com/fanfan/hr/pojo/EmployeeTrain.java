@@ -1,5 +1,8 @@
 package com.fanfan.hr.pojo;
 
+import com.fanfan.hr.common.util.StringUtil;
+import com.mysql.cj.util.StringUtils;
+
 import java.util.Date;
 
 public class EmployeeTrain {
@@ -12,6 +15,10 @@ public class EmployeeTrain {
     private String traincontent;
 
     private String remark;
+
+    private String name;
+
+    private String traindateStr;
 
     public EmployeeTrain(Integer id, Integer eid, Date traindate, String traincontent, String remark) {
         this.id = id;
@@ -63,5 +70,22 @@ public class EmployeeTrain {
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTraindateStr() {
+        return traindateStr;
+    }
+
+    public void setTraindateStr(String traindateStr) {
+        this.traindateStr = traindateStr;
+        this.traindate = StringUtil.getDateFromStr(traindateStr);
     }
 }
