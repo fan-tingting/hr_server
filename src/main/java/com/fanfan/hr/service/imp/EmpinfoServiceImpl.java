@@ -4,9 +4,11 @@ import com.fanfan.hr.common.*;
 import com.fanfan.hr.common.util.StringUtil;
 import com.fanfan.hr.mapper.DepartmentMapper;
 import com.fanfan.hr.mapper.EmployeeMapper;
+import com.fanfan.hr.mapper.EmployeeSalMapper;
 import com.fanfan.hr.mapper.PositionMapper;
 import com.fanfan.hr.pojo.Department;
 import com.fanfan.hr.pojo.Employee;
+import com.fanfan.hr.pojo.EmployeeSal;
 import com.fanfan.hr.pojo.Position;
 import com.fanfan.hr.service.EmpinfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +25,8 @@ public class EmpinfoServiceImpl implements EmpinfoService {
     private DepartmentMapper departmentMapper;
     @Autowired
     private PositionMapper positionMapper;
-
+    @Autowired
+    private EmployeeSalMapper employeeSalMapper;
 
     //获取表格数据
     @Override
@@ -63,10 +66,14 @@ public class EmpinfoServiceImpl implements EmpinfoService {
         //字符串转date
         replaceAll(input, employee);
         if (employeeMapper.insert(employee) > 0) {
-            System.out.println(employee.getId());
-            jsonResult.setMessage("新增成功");
-            jsonResult.setData(true);
-            return jsonResult;
+            Integer eid = employee.getId();
+            EmployeeSal employeeSal = new EmployeeSal();
+            employeeSal.setEid(eid);
+            if(employeeSalMapper.insert(employeeSal) > 0) {
+                jsonResult.setMessage("新增成功");
+                jsonResult.setData(true);
+                return jsonResult;
+            }
         }
         jsonResult.setMessage("新增失败");
         jsonResult.setData(false);
@@ -138,4 +145,5 @@ public class EmpinfoServiceImpl implements EmpinfoService {
         employee.setBeginpaperdate(StringUtil.getDateFromStr(input.getBeginpaperdate()));
         employee.setEndpaperdate(StringUtil.getDateFromStr(input.getEndpaperdate()));
     }
+
 }

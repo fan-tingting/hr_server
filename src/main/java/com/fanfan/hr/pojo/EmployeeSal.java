@@ -17,6 +17,8 @@ public class EmployeeSal {
 
     private String remark;
 
+    private String name;
+
     public EmployeeSal(Integer id, Integer eid, Date salarydate, Integer beforesalary, Integer aftersalary, String reason, String remark) {
         this.id = id;
         this.eid = eid;
@@ -85,5 +87,13 @@ public class EmployeeSal {
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

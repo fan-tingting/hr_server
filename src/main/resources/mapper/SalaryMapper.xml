@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.fanfan.hr.pojo.Salary" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <idArg column="createdate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="createdate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="basic" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="award" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="lunch" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -22,21 +22,22 @@
       <arg column="hurtper" jdbcType="REAL" javaType="java.lang.Float" />
       <arg column="babybase" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="babyper" jdbcType="REAL" javaType="java.lang.Float" />
+      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String"/>
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
     id, createdate, basic, award, lunch, traffic, allsalary, yanglaobase, yanglaoper, 
     yiliaobase, yiliaoper, gongjijinbase, gongjijinper, lostjobbase, lostjobper, hurtbase, 
-    hurtper, babybase, babyper
+    hurtper, babybase, babyper, name
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.fanfan.hr.pojo.SalaryKey" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from salary
     where id = #{id,jdbcType=INTEGER}
       and createdate = #{createdate,jdbcType=TIMESTAMP}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="com.fanfan.hr.pojo.SalaryKey" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from salary
     where id = #{id,jdbcType=INTEGER}
       and createdate = #{createdate,jdbcType=TIMESTAMP}
@@ -48,14 +49,14 @@
       yiliaobase, yiliaoper, gongjijinbase, 
       gongjijinper, lostjobbase, lostjobper, 
       hurtbase, hurtper, babybase, 
-      babyper)
+      babyper, name)
     values (#{id,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, #{basic,jdbcType=INTEGER}, 
       #{award,jdbcType=INTEGER}, #{lunch,jdbcType=INTEGER}, #{traffic,jdbcType=INTEGER}, 
       #{allsalary,jdbcType=INTEGER}, #{yanglaobase,jdbcType=INTEGER}, #{yanglaoper,jdbcType=REAL}, 
       #{yiliaobase,jdbcType=INTEGER}, #{yiliaoper,jdbcType=REAL}, #{gongjijinbase,jdbcType=INTEGER}, 
       #{gongjijinper,jdbcType=REAL}, #{lostjobbase,jdbcType=INTEGER}, #{lostjobper,jdbcType=REAL}, 
       #{hurtbase,jdbcType=INTEGER}, #{hurtper,jdbcType=REAL}, #{babybase,jdbcType=INTEGER}, 
-      #{babyper,jdbcType=REAL})
+      #{babyper,jdbcType=REAL}, #{name,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.fanfan.hr.pojo.Salary" >
     insert into salary
@@ -117,6 +118,9 @@
       <if test="babyper != null" >
         babyper,
       </if>
+      <if test="name != null" >
+        name,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -176,6 +180,9 @@
       <if test="babyper != null" >
         #{babyper,jdbcType=REAL},
       </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.fanfan.hr.pojo.Salary" >
@@ -232,6 +239,9 @@
       <if test="babyper != null" >
         babyper = #{babyper,jdbcType=REAL},
       </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
       and createdate = #{createdate,jdbcType=TIMESTAMP}
@@ -254,7 +264,8 @@
       hurtbase = #{hurtbase,jdbcType=INTEGER},
       hurtper = #{hurtper,jdbcType=REAL},
       babybase = #{babybase,jdbcType=INTEGER},
-      babyper = #{babyper,jdbcType=REAL}
+      babyper = #{babyper,jdbcType=REAL},
+      name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
       and createdate = #{createdate,jdbcType=TIMESTAMP}
   </update>
@@ -274,5 +285,12 @@
     count(*)
     FROM
     salary
+  </select>
+  <select id="getSalarySelector" resultType="com.fanfan.hr.common.SelectValue">
+    SELECT
+        id value,
+        name label
+    FROM
+        salary
   </select>
 </mapper>

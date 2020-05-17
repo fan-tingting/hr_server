@@ -116,4 +116,46 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getEmpSalList" parameterType="com.fanfan.hr.common.EmpSalPageInputDTO"
+      resultType="com.fanfan.hr.pojo.EmployeeSal">
+        SELECT
+            e.`name`,
+            es.id,
+            es.eid,
+            es.salarydate salaryDate,
+            es.beforesalary beforesalary,
+            es.aftersalary afterSalary,
+            es.reason,
+            es.remark
+        FROM
+            employee_sal es
+        LEFT JOIN employee e ON e.id = es.eid
+        <if test="status != null">
+          where 1 = 1
+          <if test="status == true">
+            and es.beforesalary is not null
+          </if>
+          <if test="status == false">
+            and es.beforesalary is null
+          </if>
+        </if>
+        limit #{beginPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+  <select id="getAllEmpSalCount" parameterType="com.fanfan.hr.common.EmpSalPageInputDTO"
+    resultType="java.lang.Integer">
+    SELECT
+        count(*)
+    FROM
+    employee_sal es
+    LEFT JOIN employee e ON e.id = es.eid
+    <if test="status != null">
+      where 1 = 1
+      <if test="status == true">
+        and es.beforesalary is not null
+      </if>
+      <if test="status == false">
+        and es.beforesalary is null
+      </if>
+    </if>
+  </select>
 </mapper>

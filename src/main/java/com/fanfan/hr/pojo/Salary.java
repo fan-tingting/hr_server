@@ -3,6 +3,9 @@ package com.fanfan.hr.pojo;
 import java.util.Date;
 
 public class Salary extends SalaryKey {
+
+    private Integer id;
+
     private Integer basic;
 
     private Integer award;
@@ -37,8 +40,21 @@ public class Salary extends SalaryKey {
 
     private Float babyper;
 
-    public Salary(Integer id, Date createdate, Integer basic, Integer award, Integer lunch, Integer traffic, Integer allsalary, Integer yanglaobase, Float yanglaoper, Integer yiliaobase, Float yiliaoper, Integer gongjijinbase, Float gongjijinper, Integer lostjobbase, Float lostjobper, Integer hurtbase, Float hurtper, Integer babybase, Float babyper) {
-        super(id, createdate);
+    private String name;
+
+    private Date createdate;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Salary(Integer id, Date createdate, Integer basic, Integer award, Integer lunch, Integer traffic, Integer allsalary, Integer yanglaobase, Float yanglaoper, Integer yiliaobase, Float yiliaoper, Integer gongjijinbase, Float gongjijinper, Integer lostjobbase, Float lostjobper, Integer hurtbase, Float hurtper, Integer babybase, Float babyper, String name) {
+        this.id = id;
+        this.createdate = createdate;
         this.basic = basic;
         this.award = award;
         this.lunch = lunch;
@@ -56,6 +72,7 @@ public class Salary extends SalaryKey {
         this.hurtper = hurtper;
         this.babybase = babybase;
         this.babyper = babyper;
+        this.name = name;
     }
 
     public Salary() {
@@ -120,6 +137,26 @@ public class Salary extends SalaryKey {
 
     public Integer getYiliaobase() {
         return yiliaobase;
+    }
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Override
+    public Date getCreatedate() {
+        return createdate;
+    }
+
+    @Override
+    public void setCreatedate(Date createdate) {
+        this.createdate = createdate;
     }
 
     public void setYiliaobase(Integer yiliaobase) {

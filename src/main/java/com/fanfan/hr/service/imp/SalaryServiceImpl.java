@@ -3,6 +3,7 @@ package com.fanfan.hr.service.imp;
 import com.fanfan.hr.common.JsonResult;
 import com.fanfan.hr.common.PageInputDTO;
 import com.fanfan.hr.common.PageResultDTO;
+import com.fanfan.hr.common.SelectValue;
 import com.fanfan.hr.mapper.SalaryMapper;
 import com.fanfan.hr.pojo.Salary;
 import com.fanfan.hr.pojo.SalaryKey;
@@ -54,12 +55,16 @@ public class SalaryServiceImpl implements SalaryService {
     @Override
     public JsonResult deleteSalary(Salary salary) {
         JsonResult jsonResult = new JsonResult();
-        SalaryKey key = new SalaryKey();
-        key.setCreatedate(salary.getCreatedate());
-        key.setId(salary.getId());
-        if(salaryMapper.deleteByPrimaryKey(key) > 0) {
+        if(salaryMapper.deleteByPrimaryKey(salary.getId()) > 0) {
             return jsonResult.ok(true,"删除成功");
         }
         return jsonResult.ok(false,"删除失败");
+    }
+
+    @Override
+    public JsonResult getSalarySelector() {
+        JsonResult jsonResult = new JsonResult();
+        List<SelectValue> selectValues = salaryMapper.getSalarySelector();
+        return jsonResult.ok(selectValues,"获取套餐列表成功");
     }
 }

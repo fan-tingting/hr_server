@@ -13,4 +13,6 @@ public interface SalaryService {
     JsonResult updateSalary(Salary salary);
 
     JsonResult deleteSalary(Salary salary);
+
+    JsonResult getSalarySelector();
 }
