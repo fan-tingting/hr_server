@@ -53,7 +53,13 @@ public class EmpSalServiceImpl implements EmpSalService {
             EmpSalary empSalary = new EmpSalary();
             empSalary.setEid(inputDTO.getEid());
             empSalary.setSid(inputDTO.getSalaryId());
-            empSalaryMapper.insert(empSalary);
+            EmpSalary empSalaryTemp = empSalaryMapper.queryByEid(empSalary);
+            if(empSalaryTemp != null) {
+                empSalary.setId(empSalaryTemp.getId());
+                empSalaryMapper.updateByPrimaryKeySelective(empSalary);
+            } else {
+                empSalaryMapper.insert(empSalary);
+            }
             return jsonResult.ok(true,"更新成功");
         }
         return jsonResult.ok(false,"更新失败");

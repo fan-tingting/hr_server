@@ -35,12 +35,10 @@
     <include refid="Base_Column_List" />
     from salary
     where id = #{id,jdbcType=INTEGER}
-      and createdate = #{createdate,jdbcType=TIMESTAMP}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from salary
     where id = #{id,jdbcType=INTEGER}
-      and createdate = #{createdate,jdbcType=TIMESTAMP}
   </delete>
   <insert id="insert" parameterType="com.fanfan.hr.pojo.Salary" >
     insert into salary (id, createdate, basic, 
@@ -267,7 +265,6 @@
       babyper = #{babyper,jdbcType=REAL},
       name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
-      and createdate = #{createdate,jdbcType=TIMESTAMP}
   </update>
   <select id="getSalaryList" parameterType="com.fanfan.hr.common.PageInputDTO"
       resultMap="BaseResultMap">

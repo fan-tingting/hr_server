@@ -22,4 +22,6 @@ public interface EmpSalaryMapper {
     List<ShowSalaryDTO> showEmpSalary(EmpinfoInputDTO empinfoInputDTO);
 
     Integer showAllEmpSalary(EmpinfoInputDTO empinfoInputDTO);
+
+    EmpSalary queryByEid(EmpSalary empSalary);
 }

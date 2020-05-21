@@ -118,18 +118,22 @@
   </update>
   <select id="getEmpSalList" parameterType="com.fanfan.hr.common.EmpSalPageInputDTO"
       resultType="com.fanfan.hr.pojo.EmployeeSal">
-        SELECT
-            e.`name`,
-            es.id,
-            es.eid,
-            es.salarydate salaryDate,
-            es.beforesalary beforesalary,
-            es.aftersalary afterSalary,
-            es.reason,
-            es.remark
-        FROM
-            employee_sal es
-        LEFT JOIN employee e ON e.id = es.eid
+    SELECT
+      e.`name`,
+      es.id,
+      es.eid,
+      es.salarydate salaryDate,
+      es.beforesalary beforesalary,
+      es.aftersalary afterSalary,
+      es.reason,
+      es.remark,
+      s.name salaryName,
+      s.id salaryId
+    FROM
+    employee_sal es
+    LEFT JOIN employee e ON e.id = es.eid
+    LEFT JOIN emp_salary ess on ess.eid = es.eid
+    LEFT JOIN salary s on s.id = ess.sid
         <if test="status != null">
           where 1 = 1
           <if test="status == true">

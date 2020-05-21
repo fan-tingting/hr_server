@@ -174,4 +174,12 @@
     LEFT JOIN role r on r.id = t1.rid
     limit #{beginPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
   </select>
+  <select id="getAllHrList" parameterType="com.fanfan.hr.common.PageInputDTO"
+          resultType="java.lang.Integer">
+    select
+        count(*)
+    from hr
+    LEFT JOIN hr_role t1 on t1.hrid = hr.id
+    LEFT JOIN role r on r.id = t1.rid
+  </select>
 </mapper>

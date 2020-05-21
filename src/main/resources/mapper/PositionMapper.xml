@@ -34,12 +34,10 @@
       <if test="name != null" >
         name,
       </if>
-      <if test="createdate != null" >
-        createdate,
+      <if test="department != null" >
+        department,
       </if>
-      <if test="enabled != null" >
-        enabled,
-      </if>
+
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -48,11 +46,8 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="createdate != null" >
-        #{createdate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="enabled != null" >
-        #{enabled,jdbcType=BIT},
+      <if test="department != null" >
+        #{department,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -62,11 +57,8 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="createdate != null" >
-        createdate = #{createdate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="enabled != null" >
-        enabled = #{enabled,jdbcType=BIT},
+      <if test="department != null" >
+        department = #{department,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -74,8 +66,7 @@
   <update id="updateByPrimaryKey" parameterType="com.fanfan.hr.pojo.Position" >
     update position
     set name = #{name,jdbcType=VARCHAR},
-      createdate = #{createdate,jdbcType=TIMESTAMP},
-      enabled = #{enabled,jdbcType=BIT}
+      department = #{department,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="getPositionList" parameterType="com.fanfan.hr.common.SelectValue"

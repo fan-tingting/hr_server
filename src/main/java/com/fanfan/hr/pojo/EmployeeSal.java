@@ -19,6 +19,10 @@ public class EmployeeSal {
 
     private String name;
 
+    private String salaryName;
+
+    private Integer salaryId;
+
     public EmployeeSal(Integer id, Integer eid, Date salarydate, Integer beforesalary, Integer aftersalary, String reason, String remark) {
         this.id = id;
         this.eid = eid;
@@ -95,5 +99,21 @@ public class EmployeeSal {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSalaryName() {
+        return salaryName;
+    }
+
+    public void setSalaryName(String salaryName) {
+        this.salaryName = salaryName;
+    }
+
+    public Integer getSalaryId() {
+        return salaryId;
+    }
+
+    public void setSalaryId(Integer salaryId) {
+        this.salaryId = salaryId;
     }
 }

@@ -1,6 +1,7 @@
 package com.fanfan.hr.mapper;
 
 import com.fanfan.hr.common.EmpSalPageInputDTO;
+import com.fanfan.hr.pojo.EmpSalary;
 import com.fanfan.hr.pojo.EmployeeSal;
 
 import java.util.List;
@@ -21,4 +22,7 @@ public interface EmployeeSalMapper {
     List<EmployeeSal> getEmpSalList(EmpSalPageInputDTO empSalPageInputDTO);
 
     Integer getAllEmpSalCount(EmpSalPageInputDTO empSalPageInputDTO);
+
+    EmpSalary queryByEid(EmpSalary empSalary);
+
 }

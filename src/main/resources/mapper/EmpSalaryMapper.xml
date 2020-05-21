@@ -110,4 +110,14 @@
     ) t1
     LEFT JOIN employee e ON e.id = t1.eid
   </select>
+  <select id="queryByEid" parameterType="com.fanfan.hr.pojo.EmpSalary"
+          resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM
+        emp_salary
+    WHERE
+        eid = #{eid,jdbcType=INTEGER}
+    limit 1;
+  </select>
 </mapper>

@@ -10,6 +10,8 @@ import com.fanfan.hr.service.EmpRemoveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class EmpRemoveServiceImpl implements EmpRemoveService {
 
@@ -25,6 +27,7 @@ public class EmpRemoveServiceImpl implements EmpRemoveService {
         employee.setId(employeeRemove.getEid());
         employee.setDepartment(employeeRemove.getAfterdepartment());
         employee.setPosition(employeeRemove.getAfterjob());
+        employeeRemove.setRemovedate(new Date());
         employeeMapper.updateByPrimaryKeySelective(employee);
         if(employeeRemoveMapper.insert(employeeRemove) > 0) {
             return jsonResult.ok(true,"更换部门成功");

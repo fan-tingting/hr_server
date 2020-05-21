@@ -21,6 +21,7 @@ public class EmpTrainServiceImpl implements EmpTrainService {
     public JsonResult getEmpTrainList(IdPageInputDTO pageInputDTO) {
         JsonResult jsonResult = new JsonResult();
         PageResultDTO resultDTO = new PageResultDTO();
+        pageInputDTO.resetBeginPage();
         Integer totalCount = 0;
         List<EmployeeTrain> employeeTrainList = employeeTrainMapper.getEmpTrainList(pageInputDTO);
         if(employeeTrainList != null && employeeTrainList.size() > 0) {
@@ -43,7 +44,7 @@ public class EmpTrainServiceImpl implements EmpTrainService {
     @Override
     public JsonResult updateEmpTrain(EmployeeTrain employeeTrain) {
         JsonResult jsonResult = new JsonResult();
-        if(employeeTrainMapper.updateByPrimaryKeySelective(employeeTrain) > 1) {
+        if(employeeTrainMapper.updateByPrimaryKeySelective(employeeTrain) > 0) {
             return jsonResult.ok(true,"更新成功");
         }
         return jsonResult.ok(false,"更新失败");
