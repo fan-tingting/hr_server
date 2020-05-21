@@ -1,7 +1,9 @@
 package com.fanfan.hr.service.imp;
 
-import com.fanfan.hr.common.EmpRemoveInputDTO;
+import com.fanfan.hr.common.EmpRemoveDTO;
 import com.fanfan.hr.common.JsonResult;
+import com.fanfan.hr.common.PageInputDTO;
+import com.fanfan.hr.common.PageResultDTO;
 import com.fanfan.hr.mapper.EmployeeMapper;
 import com.fanfan.hr.mapper.EmployeeRemoveMapper;
 import com.fanfan.hr.pojo.Employee;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class EmpRemoveServiceImpl implements EmpRemoveService {
@@ -33,5 +36,20 @@ public class EmpRemoveServiceImpl implements EmpRemoveService {
             return jsonResult.ok(true,"更换部门成功");
         }
         return jsonResult.ok(false,"更换部门失败");
+    }
+
+    @Override
+    public JsonResult getEmpRemoveInfo(PageInputDTO pageInputDTO) {
+        JsonResult jsonResult = new JsonResult();
+        PageResultDTO resultDTO = new PageResultDTO();
+        pageInputDTO.resetBeginPage();
+        List<EmpRemoveDTO> empRemoveDTOList = employeeMapper.getEmpRemoveInfo(pageInputDTO);
+        Integer totalPage = 0;
+        if(empRemoveDTOList != null && empRemoveDTOList.size() > 0) {
+            totalPage = employeeMapper.getAllEmpRemoveCount(pageInputDTO);
+        }
+        resultDTO.setData(empRemoveDTOList);
+        resultDTO.setTotalCount(totalPage);
+        return jsonResult.ok(resultDTO,"获取部门调动列表成功");
     }
 }

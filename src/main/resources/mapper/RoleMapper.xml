@@ -81,4 +81,11 @@
       grade = #{grade,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getRoleList" resultType="com.fanfan.hr.common.SelectValue">
+    SELECT
+        id value,
+        cname label
+    FROM
+	    role
+  </select>
 </mapper>

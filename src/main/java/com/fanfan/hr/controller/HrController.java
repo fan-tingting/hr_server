@@ -5,6 +5,7 @@ import com.fanfan.hr.common.JsonResult;
 import com.fanfan.hr.common.PageInputDTO;
 import com.fanfan.hr.pojo.Hr;
 import com.fanfan.hr.service.HrService;
+import com.fanfan.hr.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,8 @@ public class HrController {
 
     @Autowired
     private HrService hrService;
+    @Autowired
+    private RoleService roleService;
 
     @GetMapping("/getRoleList")
     public JsonResult getRoleList(PageInputDTO pageInputDTO) {
@@ -34,6 +37,11 @@ public class HrController {
     @PostMapping("/deleteHr")
     public JsonResult deleteHr(@RequestBody HrInputDTO hrInputDTO) {
         return hrService.deleteHr(hrInputDTO);
+    }
+
+    @GetMapping("/getRoleList")
+    public JsonResult getRoleList() {
+        return roleService.getRoleList();
     }
 
 }
