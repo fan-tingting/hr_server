@@ -34,4 +34,8 @@ public class EmpRemoveController {
         return empRemoveService.addEmpRemove(employeeRemove);
     }
 
+    @PostMapping("/updateEmpRemove")
+    public JsonResult updateEmpRemove(@RequestBody EmployeeRemove employeeRemove) {
+        return empRemoveService.updateEmpRemove(employeeRemove);
+    }
 }

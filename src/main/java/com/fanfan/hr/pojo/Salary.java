@@ -14,8 +14,6 @@ public class Salary extends SalaryKey {
 
     private Integer traffic;
 
-    private Integer allsalary;
-
     private Integer yanglaobase;
 
     private Integer yiliaobase;
@@ -40,14 +38,13 @@ public class Salary extends SalaryKey {
         this.name = name;
     }
 
-    public Salary(Integer id, Date createdate, Integer basic, Integer award, Integer lunch, Integer traffic, Integer allsalary, Integer yanglaobase, Integer yiliaobase,Integer gongjijinbase, Integer lostjobbase, Integer hurtbase, Integer babybase, String name) {
+    public Salary(Integer id, Date createdate, Integer basic, Integer award, Integer lunch, Integer traffic, Integer yanglaobase, Integer yiliaobase,Integer gongjijinbase, Integer lostjobbase, Integer hurtbase, Integer babybase, String name) {
         this.id = id;
         this.createdate = createdate;
         this.basic = basic;
         this.award = award;
         this.lunch = lunch;
         this.traffic = traffic;
-        this.allsalary = allsalary;
         this.yanglaobase = yanglaobase;
         this.yiliaobase = yiliaobase;
         this.gongjijinbase = gongjijinbase;
@@ -91,14 +88,6 @@ public class Salary extends SalaryKey {
 
     public void setTraffic(Integer traffic) {
         this.traffic = traffic;
-    }
-
-    public Integer getAllsalary() {
-        return allsalary;
-    }
-
-    public void setAllsalary(Integer allsalary) {
-        this.allsalary = allsalary;
     }
 
     public Integer getYanglaobase() {
@@ -167,6 +156,11 @@ public class Salary extends SalaryKey {
 
     public void setBabybase(Integer babybase) {
         this.babybase = babybase;
+    }
+
+    public Integer resetSallary() {
+        return (this.basic + this.award + lunch + traffic) -
+                (this.yanglaobase + this.yiliaobase + this.gongjijinbase + this.lostjobbase + this.hurtbase + this.babybase);
     }
 
 }

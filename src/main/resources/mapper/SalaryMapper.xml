@@ -9,7 +9,6 @@
       <arg column="award" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="lunch" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="traffic" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="allsalary" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="yanglaobase" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="yiliaobase" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="gongjijinbase" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -20,7 +19,7 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, createdate, basic, award, lunch, traffic, allsalary, yanglaobase,
+    id, createdate, basic, award, lunch, traffic, yanglaobase,
     yiliaobase, gongjijinbase, lostjobbase, hurtbase,
     babybase, name
   </sql>
@@ -37,14 +36,14 @@
   <insert id="insert" parameterType="com.fanfan.hr.pojo.Salary" >
     insert into salary (id, createdate, basic, 
       award, lunch, traffic, 
-      allsalary, yanglaobase,
+       yanglaobase,
       yiliaobase,  gongjijinbase,
       lostjobbase,
       hurtbase,  babybase,
        name)
     values (#{id,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, #{basic,jdbcType=INTEGER}, 
       #{award,jdbcType=INTEGER}, #{lunch,jdbcType=INTEGER}, #{traffic,jdbcType=INTEGER}, 
-      #{allsalary,jdbcType=INTEGER}, #{yanglaobase,jdbcType=INTEGER},
+       #{yanglaobase,jdbcType=INTEGER},
       #{yiliaobase,jdbcType=INTEGER}, #{gongjijinbase,jdbcType=INTEGER},
       #{lostjobbase,jdbcType=INTEGER},
       #{hurtbase,jdbcType=INTEGER},  #{babybase,jdbcType=INTEGER},
@@ -70,9 +69,6 @@
       </if>
       <if test="traffic != null" >
         traffic,
-      </if>
-      <if test="allsalary != null" >
-        allsalary,
       </if>
       <if test="yanglaobase != null" >
         yanglaobase,
@@ -115,9 +111,6 @@
       <if test="traffic != null" >
         #{traffic,jdbcType=INTEGER},
       </if>
-      <if test="allsalary != null" >
-        #{allsalary,jdbcType=INTEGER},
-      </if>
       <if test="yanglaobase != null" >
         #{yanglaobase,jdbcType=INTEGER},
       </if>
@@ -156,9 +149,6 @@
       <if test="traffic != null" >
         traffic = #{traffic,jdbcType=INTEGER},
       </if>
-      <if test="allsalary != null" >
-        allsalary = #{allsalary,jdbcType=INTEGER},
-      </if>
       <if test="yanglaobase != null" >
         yanglaobase = #{yanglaobase,jdbcType=INTEGER},
       </if>
@@ -190,7 +180,6 @@
       award = #{award,jdbcType=INTEGER},
       lunch = #{lunch,jdbcType=INTEGER},
       traffic = #{traffic,jdbcType=INTEGER},
-      allsalary = #{allsalary,jdbcType=INTEGER},
       yanglaobase = #{yanglaobase,jdbcType=INTEGER},
       yiliaobase = #{yiliaobase,jdbcType=INTEGER},
       gongjijinbase = #{gongjijinbase,jdbcType=INTEGER},

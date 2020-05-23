@@ -20,7 +20,7 @@ public class HrController {
     private RoleService roleService;
 
     @GetMapping("/getHrList")
-    public JsonResult getRoleList(PageInputDTO pageInputDTO) {
+    public JsonResult getHrList(PageInputDTO pageInputDTO) {
         return hrService.getHrList(pageInputDTO);
     }
 

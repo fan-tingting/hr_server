@@ -62,4 +62,13 @@ public class EmpRemoveServiceImpl implements EmpRemoveService {
         }
         return jsonResult.ok(false,"新增员工失败");
     }
+
+    @Override
+    public JsonResult updateEmpRemove(EmployeeRemove employeeRemove) {
+        JsonResult jsonResult = new JsonResult();
+        if(employeeRemoveMapper.updateByPrimaryKeySelective(employeeRemove) > 0) {
+            return jsonResult.ok(true,"更新成功");
+        }
+        return jsonResult.ok(false,"更新失败");
+    }
 }

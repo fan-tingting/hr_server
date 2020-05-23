@@ -47,7 +47,7 @@ public class EmpSalServiceImpl implements EmpSalService {
         if(inputDTO.getBeforesalary() == null) {
             inputDTO.setBeforesalary(0);
         }
-        inputDTO.setAftersalary(salary.getAllsalary());
+        inputDTO.setAftersalary(salary.resetSallary());
         inputDTO.setSalarydate(new Date());
         if(employeeSalMapper.updateByPrimaryKeySelective(inputDTO) > 0) {
             EmpSalary empSalary = new EmpSalary();

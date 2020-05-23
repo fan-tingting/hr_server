@@ -401,6 +401,7 @@
 	<if test="id != null">
       and er.eid = #{id,jdbcType=INTEGER}
     </if>
+    ORDER BY er.removedate desc
     limit #{beginPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
   </select>
   <select id="getAllEmpRemoveCount" parameterType="com.fanfan.hr.common.IdPageInputDTO"

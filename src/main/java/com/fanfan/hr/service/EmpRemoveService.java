@@ -13,4 +13,6 @@ public interface EmpRemoveService {
     JsonResult getEmpRemoveInfo(IdPageInputDTO pageInputDTO);
 
     JsonResult addEmpRemove(EmployeeRemove employeeRemove);
+
+    JsonResult updateEmpRemove(EmployeeRemove employeeRemove);
 }

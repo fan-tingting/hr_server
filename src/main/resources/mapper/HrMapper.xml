@@ -159,6 +159,7 @@
     <include refid="Base_Column_List" />
     from hr
     where username = #{username,jdbcType=VARCHAR}
+    and enable = 1
   </select>
   <select id="getHrList" parameterType="com.fanfan.hr.common.PageInputDTO"
     resultType="com.fanfan.hr.common.HrResultDTO">

@@ -4,6 +4,8 @@ public class ShowSalaryDTO {
 
     private Integer id;
 
+    private Integer eid;
+
     private String name;
 
     private Integer salary;
@@ -30,5 +32,13 @@ public class ShowSalaryDTO {
 
     public void setSalary(Integer salary) {
         this.salary = salary;
+    }
+
+    public Integer getEid() {
+        return eid;
+    }
+
+    public void setEid(Integer eid) {
+        this.eid = eid;
     }
 }
