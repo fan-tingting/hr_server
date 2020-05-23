@@ -1,9 +1,6 @@
 package com.fanfan.hr.service.imp;
 
-import com.fanfan.hr.common.EmpRemoveDTO;
-import com.fanfan.hr.common.JsonResult;
-import com.fanfan.hr.common.PageInputDTO;
-import com.fanfan.hr.common.PageResultDTO;
+import com.fanfan.hr.common.*;
 import com.fanfan.hr.mapper.EmployeeMapper;
 import com.fanfan.hr.mapper.EmployeeRemoveMapper;
 import com.fanfan.hr.pojo.Employee;
@@ -39,7 +36,7 @@ public class EmpRemoveServiceImpl implements EmpRemoveService {
     }
 
     @Override
-    public JsonResult getEmpRemoveInfo(PageInputDTO pageInputDTO) {
+    public JsonResult getEmpRemoveInfo(IdPageInputDTO pageInputDTO) {
         JsonResult jsonResult = new JsonResult();
         PageResultDTO resultDTO = new PageResultDTO();
         pageInputDTO.resetBeginPage();
@@ -51,5 +48,18 @@ public class EmpRemoveServiceImpl implements EmpRemoveService {
         resultDTO.setData(empRemoveDTOList);
         resultDTO.setTotalCount(totalPage);
         return jsonResult.ok(resultDTO,"获取部门调动列表成功");
+    }
+
+    @Override
+    public JsonResult addEmpRemove(EmployeeRemove employeeRemove) {
+        JsonResult jsonResult = new JsonResult();
+        Employee employee = employeeMapper.selectByPrimaryKey(employeeRemove.getEid());
+        if(employee == null) {
+            return jsonResult.ok(false,"员工不存在，请核实员工工号");
+        }
+        if(employeeRemoveMapper.insert(employeeRemove) > 0) {
+            return jsonResult.ok(true,"新增员工成功");
+        }
+        return jsonResult.ok(false,"新增员工失败");
     }
 }

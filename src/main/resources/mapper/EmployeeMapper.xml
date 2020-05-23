@@ -376,7 +376,7 @@
       and id = #{id,jdbcType=INTEGER}
     </if>
   </select>
-  <select id="getEmpRemoveInfo" parameterType="com.fanfan.hr.common.PageInputDTO"
+  <select id="getEmpRemoveInfo" parameterType="com.fanfan.hr.common.IdPageInputDTO"
     resultType="com.fanfan.hr.common.EmpRemoveDTO">
       select
         er.id,
@@ -397,9 +397,13 @@
     LEFT JOIN department d on d.id = e.department
 	LEFT JOIN department d1 on d1.id = er.afterdepartment
 	LEFT JOIN position p1 on p1.id = er.afterjob
+	where 1 = 1
+	<if test="id != null">
+      and er.eid = #{id,jdbcType=INTEGER}
+    </if>
     limit #{beginPage,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
   </select>
-  <select id="getAllEmpRemoveCount" parameterType="com.fanfan.hr.common.PageInputDTO"
+  <select id="getAllEmpRemoveCount" parameterType="com.fanfan.hr.common.IdPageInputDTO"
     resultType="java.lang.Integer">
     select
         count(*)
@@ -407,5 +411,9 @@
     LEFT JOIN employee e on e.id = er.eid
     LEFT JOIN position p on p.id = e.position
     Left JOIN department d on d.id = e.department
+    where 1 = 1
+    <if test="id != null">
+      and er.eid = #{id,jdbcType=INTEGER}
+    </if>
   </select>
 </mapper>

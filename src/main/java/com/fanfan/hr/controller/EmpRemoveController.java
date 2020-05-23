@@ -1,6 +1,7 @@
 package com.fanfan.hr.controller;
 
 import com.fanfan.hr.common.EmpRemoveInputDTO;
+import com.fanfan.hr.common.IdPageInputDTO;
 import com.fanfan.hr.common.JsonResult;
 import com.fanfan.hr.common.PageInputDTO;
 import com.fanfan.hr.pojo.Department;
@@ -24,13 +25,13 @@ public class EmpRemoveController {
     }
 
     @GetMapping("/getEmpRemoveInfo")
-    public JsonResult getEmpRemoveInfo(PageInputDTO pageInputDTO) {
+    public JsonResult getEmpRemoveInfo(IdPageInputDTO pageInputDTO) {
         return empRemoveService.getEmpRemoveInfo(pageInputDTO);
     }
 
     @PostMapping("/addEmpRemove")
     public JsonResult addEmpRemove(@RequestBody EmployeeRemove employeeRemove) {
-        return empRemoveService.removeEmp(employeeRemove);
+        return empRemoveService.addEmpRemove(employeeRemove);
     }
 
 }
