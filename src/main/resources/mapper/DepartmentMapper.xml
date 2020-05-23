@@ -76,6 +76,7 @@
         name label
     FROM
         department
+    WHERE enabled = true
   </select>
   <select id="getDepartmentList" parameterType="com.fanfan.hr.common.PageInputDTO"
     resultMap="BaseResultMap">
