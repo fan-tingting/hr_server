@@ -19,7 +19,7 @@ public class HrController {
     @Autowired
     private RoleService roleService;
 
-    @GetMapping("/getRoleList")
+    @GetMapping("/getHrList")
     public JsonResult getRoleList(PageInputDTO pageInputDTO) {
         return hrService.getHrList(pageInputDTO);
     }

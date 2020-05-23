@@ -24,7 +24,7 @@ public class EmpRemoveController {
     }
 
     @GetMapping("/getEmpRemoveInfo")
-    public JsonResult getEmpRemoveInfo(@RequestBody PageInputDTO pageInputDTO) {
+    public JsonResult getEmpRemoveInfo(PageInputDTO pageInputDTO) {
         return empRemoveService.getEmpRemoveInfo(pageInputDTO);
     }
 
