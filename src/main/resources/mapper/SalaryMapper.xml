@@ -11,24 +11,18 @@
       <arg column="traffic" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="allsalary" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="yanglaobase" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="yanglaoper" jdbcType="REAL" javaType="java.lang.Float" />
       <arg column="yiliaobase" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="yiliaoper" jdbcType="REAL" javaType="java.lang.Float" />
       <arg column="gongjijinbase" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="gongjijinper" jdbcType="REAL" javaType="java.lang.Float" />
       <arg column="lostjobbase" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="lostjobper" jdbcType="REAL" javaType="java.lang.Float" />
       <arg column="hurtbase" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="hurtper" jdbcType="REAL" javaType="java.lang.Float" />
       <arg column="babybase" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="babyper" jdbcType="REAL" javaType="java.lang.Float" />
       <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String"/>
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, createdate, basic, award, lunch, traffic, allsalary, yanglaobase, yanglaoper, 
-    yiliaobase, yiliaoper, gongjijinbase, gongjijinper, lostjobbase, lostjobper, hurtbase, 
-    hurtper, babybase, babyper, name
+    id, createdate, basic, award, lunch, traffic, allsalary, yanglaobase,
+    yiliaobase, gongjijinbase, lostjobbase, hurtbase,
+    babybase, name
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -43,18 +37,18 @@
   <insert id="insert" parameterType="com.fanfan.hr.pojo.Salary" >
     insert into salary (id, createdate, basic, 
       award, lunch, traffic, 
-      allsalary, yanglaobase, yanglaoper, 
-      yiliaobase, yiliaoper, gongjijinbase, 
-      gongjijinper, lostjobbase, lostjobper, 
-      hurtbase, hurtper, babybase, 
-      babyper, name)
+      allsalary, yanglaobase,
+      yiliaobase,  gongjijinbase,
+      lostjobbase,
+      hurtbase,  babybase,
+       name)
     values (#{id,jdbcType=INTEGER}, #{createdate,jdbcType=TIMESTAMP}, #{basic,jdbcType=INTEGER}, 
       #{award,jdbcType=INTEGER}, #{lunch,jdbcType=INTEGER}, #{traffic,jdbcType=INTEGER}, 
-      #{allsalary,jdbcType=INTEGER}, #{yanglaobase,jdbcType=INTEGER}, #{yanglaoper,jdbcType=REAL}, 
-      #{yiliaobase,jdbcType=INTEGER}, #{yiliaoper,jdbcType=REAL}, #{gongjijinbase,jdbcType=INTEGER}, 
-      #{gongjijinper,jdbcType=REAL}, #{lostjobbase,jdbcType=INTEGER}, #{lostjobper,jdbcType=REAL}, 
-      #{hurtbase,jdbcType=INTEGER}, #{hurtper,jdbcType=REAL}, #{babybase,jdbcType=INTEGER}, 
-      #{babyper,jdbcType=REAL}, #{name,jdbcType=VARCHAR})
+      #{allsalary,jdbcType=INTEGER}, #{yanglaobase,jdbcType=INTEGER},
+      #{yiliaobase,jdbcType=INTEGER}, #{gongjijinbase,jdbcType=INTEGER},
+      #{lostjobbase,jdbcType=INTEGER},
+      #{hurtbase,jdbcType=INTEGER},  #{babybase,jdbcType=INTEGER},
+      #{name,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.fanfan.hr.pojo.Salary" >
     insert into salary
@@ -83,38 +77,20 @@
       <if test="yanglaobase != null" >
         yanglaobase,
       </if>
-      <if test="yanglaoper != null" >
-        yanglaoper,
-      </if>
       <if test="yiliaobase != null" >
         yiliaobase,
-      </if>
-      <if test="yiliaoper != null" >
-        yiliaoper,
       </if>
       <if test="gongjijinbase != null" >
         gongjijinbase,
       </if>
-      <if test="gongjijinper != null" >
-        gongjijinper,
-      </if>
       <if test="lostjobbase != null" >
         lostjobbase,
-      </if>
-      <if test="lostjobper != null" >
-        lostjobper,
       </if>
       <if test="hurtbase != null" >
         hurtbase,
       </if>
-      <if test="hurtper != null" >
-        hurtper,
-      </if>
       <if test="babybase != null" >
         babybase,
-      </if>
-      <if test="babyper != null" >
-        babyper,
       </if>
       <if test="name != null" >
         name,
@@ -145,38 +121,20 @@
       <if test="yanglaobase != null" >
         #{yanglaobase,jdbcType=INTEGER},
       </if>
-      <if test="yanglaoper != null" >
-        #{yanglaoper,jdbcType=REAL},
-      </if>
       <if test="yiliaobase != null" >
         #{yiliaobase,jdbcType=INTEGER},
-      </if>
-      <if test="yiliaoper != null" >
-        #{yiliaoper,jdbcType=REAL},
       </if>
       <if test="gongjijinbase != null" >
         #{gongjijinbase,jdbcType=INTEGER},
       </if>
-      <if test="gongjijinper != null" >
-        #{gongjijinper,jdbcType=REAL},
-      </if>
       <if test="lostjobbase != null" >
         #{lostjobbase,jdbcType=INTEGER},
-      </if>
-      <if test="lostjobper != null" >
-        #{lostjobper,jdbcType=REAL},
       </if>
       <if test="hurtbase != null" >
         #{hurtbase,jdbcType=INTEGER},
       </if>
-      <if test="hurtper != null" >
-        #{hurtper,jdbcType=REAL},
-      </if>
       <if test="babybase != null" >
         #{babybase,jdbcType=INTEGER},
-      </if>
-      <if test="babyper != null" >
-        #{babyper,jdbcType=REAL},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
@@ -204,38 +162,20 @@
       <if test="yanglaobase != null" >
         yanglaobase = #{yanglaobase,jdbcType=INTEGER},
       </if>
-      <if test="yanglaoper != null" >
-        yanglaoper = #{yanglaoper,jdbcType=REAL},
-      </if>
       <if test="yiliaobase != null" >
         yiliaobase = #{yiliaobase,jdbcType=INTEGER},
-      </if>
-      <if test="yiliaoper != null" >
-        yiliaoper = #{yiliaoper,jdbcType=REAL},
       </if>
       <if test="gongjijinbase != null" >
         gongjijinbase = #{gongjijinbase,jdbcType=INTEGER},
       </if>
-      <if test="gongjijinper != null" >
-        gongjijinper = #{gongjijinper,jdbcType=REAL},
-      </if>
       <if test="lostjobbase != null" >
         lostjobbase = #{lostjobbase,jdbcType=INTEGER},
-      </if>
-      <if test="lostjobper != null" >
-        lostjobper = #{lostjobper,jdbcType=REAL},
       </if>
       <if test="hurtbase != null" >
         hurtbase = #{hurtbase,jdbcType=INTEGER},
       </if>
-      <if test="hurtper != null" >
-        hurtper = #{hurtper,jdbcType=REAL},
-      </if>
       <if test="babybase != null" >
         babybase = #{babybase,jdbcType=INTEGER},
-      </if>
-      <if test="babyper != null" >
-        babyper = #{babyper,jdbcType=REAL},
       </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -252,17 +192,11 @@
       traffic = #{traffic,jdbcType=INTEGER},
       allsalary = #{allsalary,jdbcType=INTEGER},
       yanglaobase = #{yanglaobase,jdbcType=INTEGER},
-      yanglaoper = #{yanglaoper,jdbcType=REAL},
       yiliaobase = #{yiliaobase,jdbcType=INTEGER},
-      yiliaoper = #{yiliaoper,jdbcType=REAL},
       gongjijinbase = #{gongjijinbase,jdbcType=INTEGER},
-      gongjijinper = #{gongjijinper,jdbcType=REAL},
       lostjobbase = #{lostjobbase,jdbcType=INTEGER},
-      lostjobper = #{lostjobper,jdbcType=REAL},
       hurtbase = #{hurtbase,jdbcType=INTEGER},
-      hurtper = #{hurtper,jdbcType=REAL},
       babybase = #{babybase,jdbcType=INTEGER},
-      babyper = #{babyper,jdbcType=REAL},
       name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

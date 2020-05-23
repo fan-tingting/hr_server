@@ -1,5 +1,7 @@
 package com.fanfan.hr.pojo;
 
+import com.fanfan.hr.common.util.StringUtil;
+
 import java.util.Date;
 
 public class EmployeeRemove {
@@ -12,6 +14,8 @@ public class EmployeeRemove {
     private Integer afterjob;
 
     private Date removedate;
+
+    private String removeDateStr;
 
     private String reason;
 
@@ -85,5 +89,16 @@ public class EmployeeRemove {
 
     public void setRemark(String remark) {
         this.remark = remark == null ? null : remark.trim();
+    }
+
+    public String getRemoveDateStr() {
+        return removeDateStr;
+    }
+
+    public void setRemoveDateStr(String removeDateStr) {
+        this.removeDateStr = removeDateStr;
+        if(this.removedate == null) {
+            this.removedate = StringUtil.getDateFromStr(removeDateStr);
+        }
     }
 }

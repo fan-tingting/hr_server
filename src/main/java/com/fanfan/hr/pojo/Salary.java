@@ -18,27 +18,15 @@ public class Salary extends SalaryKey {
 
     private Integer yanglaobase;
 
-    private Float yanglaoper;
-
     private Integer yiliaobase;
-
-    private Float yiliaoper;
 
     private Integer gongjijinbase;
 
-    private Float gongjijinper;
-
     private Integer lostjobbase;
-
-    private Float lostjobper;
 
     private Integer hurtbase;
 
-    private Float hurtper;
-
     private Integer babybase;
-
-    private Float babyper;
 
     private String name;
 
@@ -52,7 +40,7 @@ public class Salary extends SalaryKey {
         this.name = name;
     }
 
-    public Salary(Integer id, Date createdate, Integer basic, Integer award, Integer lunch, Integer traffic, Integer allsalary, Integer yanglaobase, Float yanglaoper, Integer yiliaobase, Float yiliaoper, Integer gongjijinbase, Float gongjijinper, Integer lostjobbase, Float lostjobper, Integer hurtbase, Float hurtper, Integer babybase, Float babyper, String name) {
+    public Salary(Integer id, Date createdate, Integer basic, Integer award, Integer lunch, Integer traffic, Integer allsalary, Integer yanglaobase, Integer yiliaobase,Integer gongjijinbase, Integer lostjobbase, Integer hurtbase, Integer babybase, String name) {
         this.id = id;
         this.createdate = createdate;
         this.basic = basic;
@@ -61,17 +49,11 @@ public class Salary extends SalaryKey {
         this.traffic = traffic;
         this.allsalary = allsalary;
         this.yanglaobase = yanglaobase;
-        this.yanglaoper = yanglaoper;
         this.yiliaobase = yiliaobase;
-        this.yiliaoper = yiliaoper;
         this.gongjijinbase = gongjijinbase;
-        this.gongjijinper = gongjijinper;
         this.lostjobbase = lostjobbase;
-        this.lostjobper = lostjobper;
         this.hurtbase = hurtbase;
-        this.hurtper = hurtper;
         this.babybase = babybase;
-        this.babyper = babyper;
         this.name = name;
     }
 
@@ -127,14 +109,6 @@ public class Salary extends SalaryKey {
         this.yanglaobase = yanglaobase;
     }
 
-    public Float getYanglaoper() {
-        return yanglaoper;
-    }
-
-    public void setYanglaoper(Float yanglaoper) {
-        this.yanglaoper = yanglaoper;
-    }
-
     public Integer getYiliaobase() {
         return yiliaobase;
     }
@@ -163,28 +137,12 @@ public class Salary extends SalaryKey {
         this.yiliaobase = yiliaobase;
     }
 
-    public Float getYiliaoper() {
-        return yiliaoper;
-    }
-
-    public void setYiliaoper(Float yiliaoper) {
-        this.yiliaoper = yiliaoper;
-    }
-
     public Integer getGongjijinbase() {
         return gongjijinbase;
     }
 
     public void setGongjijinbase(Integer gongjijinbase) {
         this.gongjijinbase = gongjijinbase;
-    }
-
-    public Float getGongjijinper() {
-        return gongjijinper;
-    }
-
-    public void setGongjijinper(Float gongjijinper) {
-        this.gongjijinper = gongjijinper;
     }
 
     public Integer getLostjobbase() {
@@ -195,28 +153,12 @@ public class Salary extends SalaryKey {
         this.lostjobbase = lostjobbase;
     }
 
-    public Float getLostjobper() {
-        return lostjobper;
-    }
-
-    public void setLostjobper(Float lostjobper) {
-        this.lostjobper = lostjobper;
-    }
-
     public Integer getHurtbase() {
         return hurtbase;
     }
 
     public void setHurtbase(Integer hurtbase) {
         this.hurtbase = hurtbase;
-    }
-
-    public Float getHurtper() {
-        return hurtper;
-    }
-
-    public void setHurtper(Float hurtper) {
-        this.hurtper = hurtper;
     }
 
     public Integer getBabybase() {
@@ -227,11 +169,4 @@ public class Salary extends SalaryKey {
         this.babybase = babybase;
     }
 
-    public Float getBabyper() {
-        return babyper;
-    }
-
-    public void setBabyper(Float babyper) {
-        this.babyper = babyper;
-    }
 }

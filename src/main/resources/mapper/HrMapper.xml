@@ -166,6 +166,7 @@
         hr.id,
         hr.`name`,
         hr.phone,
+        hr.username userName,
         r.cname,
         t1.id hrRoleId,
         hr.enabled

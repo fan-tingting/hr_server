@@ -6,6 +6,8 @@ public class HrResultDTO {
 
     private String name;
 
+    private String userName;
+
     private String phone;
 
     private String roleName;
@@ -60,5 +62,13 @@ public class HrResultDTO {
 
     public void setHrRoleId(Integer hrRoleId) {
         this.hrRoleId = hrRoleId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

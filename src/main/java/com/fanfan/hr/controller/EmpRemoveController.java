@@ -28,4 +28,9 @@ public class EmpRemoveController {
         return empRemoveService.getEmpRemoveInfo(pageInputDTO);
     }
 
+    @PostMapping("/addEmpRemove")
+    public JsonResult addEmpRemove(@RequestBody EmployeeRemove employeeRemove) {
+        return empRemoveService.removeEmp(employeeRemove);
+    }
+
 }
