@@ -2,6 +2,7 @@ package com.fanfan.hr.controller;
 
 import com.fanfan.hr.common.JsonResult;
 import com.fanfan.hr.common.LoginInputDTO;
+import com.fanfan.hr.pojo.Hr;
 import com.fanfan.hr.service.LoginService;
 import com.mysql.cj.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,8 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @GetMapping("/login")
-    public JsonResult login(LoginInputDTO inputDTO) {
+    @PostMapping("/login")
+    public JsonResult login(@RequestBody LoginInputDTO inputDTO) {
         JsonResult result = new JsonResult();
         if(StringUtils.isNullOrEmpty(inputDTO.getUsername()) &&
         StringUtils.isNullOrEmpty(inputDTO.getPassword())) {
@@ -24,5 +25,9 @@ public class LoginController {
         }
         return loginService.login(inputDTO);
     }
-
+    //只传Hr的id
+    @PostMapping("/loginOut")
+    public JsonResult loginOut(@RequestBody Hr hr) {
+        return loginService.loginOut(hr);
+    }
 }

@@ -1,7 +1,7 @@
 package com.fanfan.hr.interceptor;
 
 import com.fanfan.hr.annotation.LoginRequired;
-import com.fanfan.hr.common.RedisUtil;
+import com.fanfan.hr.common.util.RedisUtil;
 import com.mysql.cj.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
