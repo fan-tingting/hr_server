@@ -1,5 +1,6 @@
 package com.fanfan.hr.controller;
 
+import com.fanfan.hr.annotation.LoginRequired;
 import com.fanfan.hr.common.JsonResult;
 import com.fanfan.hr.common.PageInputDTO;
 import com.fanfan.hr.pojo.Department;
@@ -18,21 +19,25 @@ public class PositionController {
     private PositionService positionService;
 
     @GetMapping("/getPositionList")
+    @LoginRequired
     public JsonResult getPositionList(PageInputDTO pageInputDTO) {
         return positionService.getPositionList(pageInputDTO);
     }
 
     @PostMapping("/addPostion")
+    @LoginRequired
     public JsonResult addPosition(@RequestBody Position position) {
         return positionService.addPosition(position);
     }
 
     @PostMapping("/updatePosition")
+    @LoginRequired
     public JsonResult updatePosition(@RequestBody Position position) {
         return positionService.updatePosition(position);
     }
 
     @PostMapping("/deletePosition")
+    @LoginRequired
     public JsonResult deletePosition(@RequestBody Position position) {
         return positionService.deletePosition(position.getId());
     }

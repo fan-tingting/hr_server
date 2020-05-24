@@ -9,6 +9,8 @@ public class LoginResultDTO {
 
     private Role role;
 
+    private String token;
+
     public Hr getHr() {
         return hr;
     }
@@ -23,5 +25,13 @@ public class LoginResultDTO {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

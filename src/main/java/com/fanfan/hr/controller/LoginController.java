@@ -14,8 +14,8 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @PostMapping("/login")
-    public JsonResult login(@RequestBody LoginInputDTO inputDTO) {
+    @GetMapping("/login")
+    public JsonResult login(LoginInputDTO inputDTO) {
         JsonResult result = new JsonResult();
         if(StringUtils.isNullOrEmpty(inputDTO.getUsername()) &&
         StringUtils.isNullOrEmpty(inputDTO.getPassword())) {

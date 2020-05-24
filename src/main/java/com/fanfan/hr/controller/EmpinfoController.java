@@ -1,5 +1,6 @@
 package com.fanfan.hr.controller;
 
+import com.fanfan.hr.annotation.LoginRequired;
 import com.fanfan.hr.common.*;
 import com.fanfan.hr.common.util.IntegerUtil;
 import com.fanfan.hr.pojo.Employee;
@@ -28,6 +29,7 @@ public class EmpinfoController {
     private PositionService positionService;
 
     @GetMapping("/basicinfo")
+    @LoginRequired
     public JsonResult getEmpinfo(EmpinfoInputDTO inputDTO) {
         JsonResult result = new JsonResult();
         if(!IntegerUtil.judgeInteger(inputDTO.getPage()) || !IntegerUtil.judgeInteger(inputDTO.getPageSize())){
@@ -37,26 +39,31 @@ public class EmpinfoController {
         return empinfoService.getEmpinfo(inputDTO);
     }
     @PostMapping("/addempinfo")
+    @LoginRequired
     public JsonResult addEmpinfo(@RequestBody EmployeeDTO input) {
         return empinfoService.addEmp(input);
     }
 
     @PostMapping("/editempinfo")
+    @LoginRequired
     public JsonResult editEmpinfo(@RequestBody EmployeeDTO input) {
         return empinfoService.editEmp(input);
     }
 
     @PostMapping("/deleteEmpInfo")
+    @LoginRequired
     public JsonResult deleteEmpInfo(@RequestBody EmployeeDTO input) {
         return empinfoService.deleteEmpInfo(input.getId());
     }
 
     @GetMapping("/getDepartMentList")
+    @LoginRequired
     public JsonResult getDepartMentList() {
         return departMentService.getDepartMentList();
     }
 
     @GetMapping("/getPositionList")
+    @LoginRequired
     public JsonResult getPositionList(SelectValue selectValue) {
         return positionService.getPositionList(selectValue);
     }

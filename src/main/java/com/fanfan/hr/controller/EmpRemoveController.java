@@ -1,5 +1,6 @@
 package com.fanfan.hr.controller;
 
+import com.fanfan.hr.annotation.LoginRequired;
 import com.fanfan.hr.common.EmpRemoveInputDTO;
 import com.fanfan.hr.common.IdPageInputDTO;
 import com.fanfan.hr.common.JsonResult;
@@ -21,21 +22,25 @@ public class EmpRemoveController {
     private EmpRemoveService empRemoveService;
 
     @PostMapping("/removeEmp")
+    @LoginRequired
     public JsonResult removeEmp(@RequestBody EmployeeRemove employeeRemove) {
         return empRemoveService.removeEmp(employeeRemove);
     }
 
     @GetMapping("/getEmpRemoveInfo")
+    @LoginRequired
     public JsonResult getEmpRemoveInfo(IdPageInputDTO pageInputDTO) {
         return empRemoveService.getEmpRemoveInfo(pageInputDTO);
     }
 
     @PostMapping("/addEmpRemove")
+    @LoginRequired
     public JsonResult addEmpRemove(@RequestBody EmployeeRemove employeeRemove) {
         return empRemoveService.addEmpRemove(employeeRemove);
     }
 
     @PostMapping("/updateEmpRemove")
+    @LoginRequired
     public JsonResult updateEmpRemove(@RequestBody EmployeeRemove employeeRemove) {
         return empRemoveService.updateEmpRemove(employeeRemove);
     }

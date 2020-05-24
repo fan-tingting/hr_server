@@ -1,5 +1,6 @@
 package com.fanfan.hr.controller;
 
+import com.fanfan.hr.annotation.LoginRequired;
 import com.fanfan.hr.common.IdPageInputDTO;
 import com.fanfan.hr.common.JsonResult;
 import com.fanfan.hr.common.PageInputDTO;
@@ -20,21 +21,25 @@ public class EmpTrainController {
     private EmpTrainService empTrainService;
 
     @GetMapping("/getEmpTrainList")
+    @LoginRequired
     public JsonResult getEmpTrainList(IdPageInputDTO pageInputDTO) {
         return empTrainService.getEmpTrainList(pageInputDTO);
     }
 
     @PostMapping("/addEmpTrain")
+    @LoginRequired
     public JsonResult addEmpTrain(@RequestBody EmployeeTrain employeeTrain) {
         return empTrainService.addEmpTrain(employeeTrain);
     }
 
     @PostMapping("/updateEmpTrain")
+    @LoginRequired
     public JsonResult updateEmpTrain(@RequestBody EmployeeTrain employeeTrain) {
         return empTrainService.updateEmpTrain(employeeTrain);
     }
 
     @PostMapping("/deleteEmpTrain")
+    @LoginRequired
     public JsonResult deleteEmpTrain(@RequestBody EmployeeTrain employeeTrain) {
         return empTrainService.deleteEmpTrain(employeeTrain);
     }

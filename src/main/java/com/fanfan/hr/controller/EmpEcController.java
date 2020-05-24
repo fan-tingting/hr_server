@@ -1,5 +1,6 @@
 package com.fanfan.hr.controller;
 
+import com.fanfan.hr.annotation.LoginRequired;
 import com.fanfan.hr.common.EmpinfoInputDTO;
 import com.fanfan.hr.common.EmployeeDTO;
 import com.fanfan.hr.common.JsonResult;
@@ -22,21 +23,25 @@ public class EmpEcController {
    private EmpEcService empEcService;
 
    @GetMapping("/getEcList")
+   @LoginRequired
    public JsonResult getEcList(EmpinfoInputDTO empinfoInputDTO) {
        return empEcService.getEcList(empinfoInputDTO);
    }
 
    @PostMapping("/addEmpEc")
+   @LoginRequired
    public JsonResult addEmpEc(@RequestBody EmployeeEc employeeEc){
        return empEcService.addEmpEc(employeeEc);
    }
 
    @PostMapping("/updateEmpEc")
+   @LoginRequired
     public JsonResult updateEmpEc(@RequestBody EmployeeEc employeeEc) {
        return empEcService.updateEmpEc(employeeEc);
    }
 
    @PostMapping("/deleteEmpEc")
+   @LoginRequired
     public JsonResult deleteEmpEc(@RequestBody EmployeeEc employeeEc) {
        return empEcService.deleteEmpEc(employeeEc.getId());
    }
