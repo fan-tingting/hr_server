@@ -3,7 +3,9 @@ package com.fanfan.hr.service.imp;
 import com.fanfan.hr.common.IdPageInputDTO;
 import com.fanfan.hr.common.JsonResult;
 import com.fanfan.hr.common.PageResultDTO;
+import com.fanfan.hr.mapper.EmployeeMapper;
 import com.fanfan.hr.mapper.EmployeeTrainMapper;
+import com.fanfan.hr.pojo.Employee;
 import com.fanfan.hr.pojo.EmployeeTrain;
 import com.fanfan.hr.service.EmpTrainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,8 @@ public class EmpTrainServiceImpl implements EmpTrainService {
 
     @Autowired
     private EmployeeTrainMapper employeeTrainMapper;
+    @Autowired
+    private EmployeeMapper employeeMapper;
 
     @Override
     public JsonResult getEmpTrainList(IdPageInputDTO pageInputDTO) {
@@ -35,6 +39,10 @@ public class EmpTrainServiceImpl implements EmpTrainService {
     @Override
     public JsonResult addEmpTrain(EmployeeTrain employeeTrain) {
         JsonResult jsonResult = new JsonResult();
+        Employee employee = employeeMapper.selectByPrimaryKey(employeeTrain.getEid());
+        if(employee == null) {
+            return jsonResult.ok(false,"员工不存在");
+        }
         if(employeeTrainMapper.insert(employeeTrain) > 0) {
             return jsonResult.ok(true,"插入培训记录成功");
         }

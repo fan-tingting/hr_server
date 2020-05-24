@@ -44,9 +44,13 @@ public class EmpinfoServiceImpl implements EmpinfoService {
                 empDepartmentId = employee.getDepartment();
                 empPositionId = employee.getPosition();
                 Department department = departmentMapper.selectByPrimaryKey(empDepartmentId);
+                if(department != null) {
+                    employee.setDepartmentZh(department.getName());
+                }
                 Position position = positionMapper.selectByPrimaryKey(empPositionId);
-                employee.setPositionZh(position.getName());
-                employee.setDepartmentZh(department.getName());
+                if(position != null) {
+                    employee.setPositionZh(position.getName());
+                }
             }
             // 2获取总数据量
             totalCount = employeeMapper.getEmpinfoTotalCount(inputDTO);

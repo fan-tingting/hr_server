@@ -29,6 +29,10 @@ public class EmpRemoveServiceImpl implements EmpRemoveService {
         employee.setPosition(employeeRemove.getAfterjob());
         employeeRemove.setRemovedate(new Date());
         employeeMapper.updateByPrimaryKeySelective(employee);
+//        Employee employeeR = employeeMapper.selectByPrimaryKey(employeeRemove.getEid());
+//        if(employeeR == null) {
+//            return jsonResult.ok(false,"员工不存在,更换失败");
+//        }
         if(employeeRemoveMapper.insert(employeeRemove) > 0) {
             return jsonResult.ok(true,"更换部门成功");
         }
@@ -58,6 +62,9 @@ public class EmpRemoveServiceImpl implements EmpRemoveService {
             return jsonResult.ok(false,"员工不存在，请核实员工工号");
         }
         if(employeeRemoveMapper.insert(employeeRemove) > 0) {
+            employee.setDepartment(employeeRemove.getAfterdepartment());
+            employee.setPosition(employeeRemove.getAfterjob());
+            employeeMapper.updateByPrimaryKeySelective(employee);
             return jsonResult.ok(true,"新增员工成功");
         }
         return jsonResult.ok(false,"新增员工失败");

@@ -4,6 +4,7 @@ import com.fanfan.hr.common.EmpRemoveInputDTO;
 import com.fanfan.hr.common.IdPageInputDTO;
 import com.fanfan.hr.common.JsonResult;
 import com.fanfan.hr.common.PageInputDTO;
+import com.fanfan.hr.mapper.EmployeeMapper;
 import com.fanfan.hr.pojo.Department;
 import com.fanfan.hr.pojo.EmployeeRemove;
 import com.fanfan.hr.service.DepartMentService;

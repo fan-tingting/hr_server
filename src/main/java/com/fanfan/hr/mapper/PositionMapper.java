@@ -25,4 +25,6 @@ public interface PositionMapper {
     List<PositionDTO> getPositionLists(PageInputDTO pageInputDTO);
 
     Integer getAllPositionList(PageInputDTO pageInputDTO);
+
+    List<Position> selectByDepartmentId(Integer id);
 }

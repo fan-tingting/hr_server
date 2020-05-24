@@ -1,7 +1,9 @@
 package com.fanfan.hr.service.imp;
 
 import com.fanfan.hr.common.*;
+import com.fanfan.hr.mapper.EmployeeMapper;
 import com.fanfan.hr.mapper.PositionMapper;
+import com.fanfan.hr.pojo.Employee;
 import com.fanfan.hr.pojo.Position;
 import com.fanfan.hr.service.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ public class PositionServiceImpl implements PositionService {
 
     @Autowired
     private PositionMapper positionMapper;
+    @Autowired
+    private EmployeeMapper employeeMapper;
 
     @Override
     public JsonResult getPositionList(SelectValue selectValue) {
@@ -63,6 +67,10 @@ public class PositionServiceImpl implements PositionService {
     @Override
     public JsonResult deletePosition(Integer id) {
         JsonResult jsonResult = new JsonResult();
+        List<Employee> employeeList = employeeMapper.queryByWorkstate(id);
+        if(employeeList != null && employeeList.size() > 0) {
+            return jsonResult.ok(false,"该职位下还有在职员工，不允许删除");
+        }
         if(positionMapper.deleteByPrimaryKey(id) > 0) {
             return jsonResult.ok(true,"删除成功");
         }

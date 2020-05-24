@@ -5,7 +5,9 @@ import com.fanfan.hr.common.PageInputDTO;
 import com.fanfan.hr.common.PageResultDTO;
 import com.fanfan.hr.common.SelectValue;
 import com.fanfan.hr.mapper.DepartmentMapper;
+import com.fanfan.hr.mapper.PositionMapper;
 import com.fanfan.hr.pojo.Department;
+import com.fanfan.hr.pojo.Position;
 import com.fanfan.hr.service.DepartMentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,8 @@ public class DepartMentServiceImpl implements DepartMentService {
 
     @Autowired
     private DepartmentMapper departmentMapper;
+    @Autowired
+    private PositionMapper positionMapper;
 
     @Override
     public JsonResult getDepartMentList() {
@@ -67,6 +71,10 @@ public class DepartMentServiceImpl implements DepartMentService {
     @Override
     public JsonResult deleteDepartment(Department department) {
         JsonResult jsonResult = new JsonResult();
+        List<Position> positionList = positionMapper.selectByDepartmentId(department.getId());
+        if(positionList != null && positionList.size() > 0) {
+            return jsonResult.ok(false,"该部门下面还有职位，不允许删除");
+        }
         if(departmentMapper.deleteByPrimaryKey(department.getId()) > 0) {
             return jsonResult.ok(true,"删除成功");
         }

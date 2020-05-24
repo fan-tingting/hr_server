@@ -27,4 +27,6 @@ public interface EmployeeMapper {
     List<EmpRemoveDTO> getEmpRemoveInfo(PageInputDTO pageInputDTO);
 
     Integer getAllEmpRemoveCount(PageInputDTO pageInputDTO);
+
+    List<Employee> queryByWorkstate(Integer id);
 }

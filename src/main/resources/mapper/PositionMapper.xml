@@ -102,4 +102,9 @@
             position p
      LEFT JOIN department d ON d.id = p.department
   </select>
+  <select id="selectByDepartmentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, department
+    from position
+    where department = #{id,jdbcType=INTEGER}
+  </select>
 </mapper>
